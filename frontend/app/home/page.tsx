@@ -1,7 +1,12 @@
-import Header from "@/components/header/header" 
-
+'use client'
+import Hearder from '../../components/header/header'
+import Wave from '@/components/wave/mainWave/mainWave'
+ 
 export default function Home() {
     return (
-        <Header />
+        <>
+        <Hearder />
+        <Wave />
+        </>
     )
 }
