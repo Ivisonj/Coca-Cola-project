@@ -1,4 +1,4 @@
-import styled from "styled-components"
+ import styled from "styled-components"
 
 export const Container = styled.div `
     position: absolute;
@@ -9,12 +9,12 @@ export const Container = styled.div `
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    z-index: 2;
 `
 
 export const MenuConatiner = styled.div `
     width: 10%;
     height: 100%;
-    display: flex;
     display: flex;
     align-items: center;
     justify-content: center;

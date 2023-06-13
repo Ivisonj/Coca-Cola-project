@@ -1,6 +1,6 @@
 'use client'
-import Hearder from '../../components/header/header'
-import Wave from '@/components/wave/mainWave/mainWave'
+import Hearder from '@/components/header'
+import Wave from '@/components/wave'
  
 export default function Home() {
     return (

@@ -40,3 +40,4 @@ export const WaveContainer = styled.div`
         animation: ${waveAnimation} 12s;
     }
 `;
+
