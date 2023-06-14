@@ -12,16 +12,15 @@ export const Container = styled.div `
     z-index: 2;
 `
 
-export const MenuConatiner = styled.div `
-    width: 10%;
+export const Row = styled.div `
+    width: 33%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
 `
 
-export const MarketIconContainer = styled.div `
-    width: 5%;
+export const Icon = styled.div `
+    width: 15%;
     height: 100%;
     background-color: red;
     display: flex;
