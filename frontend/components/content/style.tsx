@@ -6,4 +6,5 @@ export const Container = styled.div `
     height: 100vh;
     z-index: 1;
     background-color: transparent;
+    display: flex;
 `

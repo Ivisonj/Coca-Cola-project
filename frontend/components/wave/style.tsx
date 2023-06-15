@@ -15,7 +15,7 @@ const waveAnimation = keyframes`
         transform: rotate(0deg);
     }
     100% {
-        transform: rotate(360deg);
+        transform: rotate(180deg);
     }
 `;
 
@@ -37,7 +37,7 @@ export const WaveContainer = styled.div`
         background-color: #f5f5f5;
         top: -113%;
         border-radius: 40%;
-        animation: ${waveAnimation} 12s;
+        animation: ${waveAnimation} 3s;
     }
 `;
 

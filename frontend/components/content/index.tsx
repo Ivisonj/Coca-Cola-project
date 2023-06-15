@@ -1,10 +1,14 @@
-import React from "react"
+import React, { Children } from "react"
 import { Container } from "./style"
 
-export default function Content() {
+interface ContentProps {
+    children: any
+}
+
+export default function Content(props: ContentProps) {
     return (
         <>
-            <Container />
+            <Container>{props.children}</Container>
         </>
     )
 }
