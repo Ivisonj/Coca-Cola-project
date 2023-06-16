@@ -7,7 +7,7 @@ export const Container = styled.div `
     background-color: #fff;
     // box-shadow: 0px  2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: row;
     z-index: 2;
 `
@@ -17,22 +17,4 @@ export const Row = styled.div `
     height: 100%;
     display: flex;
     align-items: center;
-`
-
-export const Icon = styled.div `
-    width: 15%;
-    height: 100%;
-    background-color: red;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-` 
-
-export const Menu = styled.h3 `
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-    color: red;
 `
