@@ -15,6 +15,7 @@ export const RightContainer = styled.div `
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
 `
 export const Title = styled.h1 `
     font-style: normal;
