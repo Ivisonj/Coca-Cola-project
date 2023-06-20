@@ -1,18 +1,20 @@
 import React from "react";
+import Image from "next/image";
 
-import { Container, ProductName } from './style'
+import { CardContainer, ProductName } from './style'
 
 interface CardProps {
-    name: string
+    name?: string
     img?: string
 }
 
 export default function Card({ name, img }: CardProps) {
     return (
         <>
-            <Container>
+            <CardContainer>
                 <ProductName>{name}</ProductName>
-            </Container>
+                <img width='100%' height='100%' src={img} alt={name} />
+            </CardContainer>
         </>
     )
 }

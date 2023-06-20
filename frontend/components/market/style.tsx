@@ -20,11 +20,11 @@ export const Container = styled.div `
 export const Icon = styled.div `
     width: 100%;
     height: 60px;
-    // height: 10%;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: red;
+    cursor: pointer;
 `
 
 export const ProductDetail = styled.div `
