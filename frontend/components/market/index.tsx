@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Icon, ProductDetail, PurchaseConfirmation, Product, ProductName, Text } from "./style"
 import Amount from '../amount';
-import Button from '../button';
+import MarketButton from '../buttons/marketButton';
 
 export default function Market() {
     const [isVisible, setisVisible] = useState(false)
@@ -27,7 +27,7 @@ export default function Market() {
                 <PurchaseConfirmation className={!isVisible ? 'donShowDisplay' : null}>
                     <Text style={{ color: "#000"}}>Total</Text>
                     <Text style={{ color: "#000"}}>R$10,00</Text>
-                    <Button type='primary'>Finalizar Pedido</Button>
+                    <MarketButton type='primary'>Finalizar Pedido</MarketButton>
                 </PurchaseConfirmation>
             </Container>  
         </>

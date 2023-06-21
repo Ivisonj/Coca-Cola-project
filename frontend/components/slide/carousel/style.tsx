@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const CarouselContainer = styled.div `
     position: relative;
-    width: 15rem;
-    height: 15rem;
+    width: 12rem;
+    height: 12rem;
     perspective: 500px;
     transform-style: preserve-3d;
 `
@@ -34,12 +34,16 @@ export const NavButton = styled.button `
     background: unset;
     border: unset;
 
+    &.active {
+       
+    }
+
     &.toLeft {
-    transform: translateX(-100%) translateY(-50%);
+        transform: translateX(-100%) translateY(-50%);
     }
 
     &.toRight {
-    right: 0;
-    transform: translateX(100%) translateY(-50%);
+        right: 0;
+        transform: translateX(100%) translateY(-50%);
     }
 `

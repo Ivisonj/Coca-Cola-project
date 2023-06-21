@@ -3,11 +3,11 @@ import styled from 'styled-components'
 export const CardContainer = styled.div `
     width: 100%;
     height: 100%;
-    padding: 2rem;
     background-color: hsl(200deg, 40%, calc(100% - var(--abs-compensation) * 50%));
     border-radius: 1rem;
-    color: #9ca3af;
-    text-align: justify;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
     transition: all 0.3s ease-out;
 `
 
@@ -21,4 +21,9 @@ export const ProductName = styled.h2 `
     transition: all 0.3s ease-out;
     opacity: var(--ativo);
     user-select: none;
+`
+export const ProductImage = styled.img<{ increaseImg: boolean }> `
+    width: ${(props) => (props.increaseImg ? '130%' : '70%')};
+    height: ${(props) => (props.increaseImg ? '150%' : '70%')};
+    transition: 0.5s all ease-in-out;
 `

@@ -1,7 +1,7 @@
-import React from "react";
-import Image from "next/image";
+import React, { useContext } from "react";
+import { CarouselContext } from '../carousel/index'
 
-import { CardContainer, ProductName } from './style'
+import { CardContainer, ProductName, ProductImage } from './style'
 
 interface CardProps {
     name?: string
@@ -9,12 +9,17 @@ interface CardProps {
 }
 
 export default function Card({ name, img }: CardProps) {
+    const { currentActive, index } = useContext(CarouselContext)
+
     return (
         <>
             <CardContainer>
-                <ProductName>{name}</ProductName>
-                <img width='100%' height='100%' src={img} alt={name} />
+                <ProductImage src={img} alt={name} increaseImg={index === currentActive ? 1 : 0} />
             </CardContainer>
         </>
     )
 }
+
+
+
+

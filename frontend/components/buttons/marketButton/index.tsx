@@ -3,12 +3,12 @@ import React from "react";
 import { StyleButton } from "./style";
 import { type } from "os";
 
-interface propsButton {
+interface ButtonProps {
     children?: string
     type?: string
 }
 
-export default function Button(props: propsButton) {
+export default function MarketButton(props: ButtonProps) {
     return (
         <>
             {props.type === 'primary' ? (

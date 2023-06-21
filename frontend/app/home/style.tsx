@@ -11,12 +11,30 @@ export const LeftContainer = styled.div `
 
 export const RightContainer = styled.div `
     width: 55%;
-    height: 80%;
+    height: 95%;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     overflow: hidden;
 `
+
+export const CarouselContent = styled.div `
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const ProductInfor = styled.div `
+    width: 100%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
 export const Title = styled.h1 `
     font-style: normal;
     font-weight: 700;

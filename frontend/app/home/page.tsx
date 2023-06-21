@@ -5,9 +5,10 @@ import Content from '@/components/content'
 import Market from '@/components/market'
 import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
+import AddProductButton from '@/components/buttons/addProductButton'
 
 
-import { LeftContainer, RightContainer, Title, TextContent } from './style'
+import { LeftContainer, RightContainer, CarouselContent, ProductInfor, Title, TextContent } from './style'
 
 
 const contentCards = [
@@ -46,15 +47,20 @@ export default function Home() {
                 </TextContent>
             </LeftContainer>
             <RightContainer>
-                <Carousel totalCards={totalCards}>
-                    {contentCards.map((_, i) => (
-                        <Card 
-                            key={i}
-                            name={contentCards[i].name}
-                            img={contentCards[i].img}                   
-                        />
-                    ))}
-                 </Carousel>
+                <CarouselContent>
+                    <Carousel totalCards={totalCards}>
+                        {contentCards.map((_, i) => (
+                            <Card 
+                                key={i}
+                                name={contentCards[i].name}
+                                img={contentCards[i].img}                   
+                            />
+                        ))}
+                    </Carousel>
+                </CarouselContent>
+                <ProductInfor>
+                    <AddProductButton></AddProductButton>
+                </ProductInfor>
             </RightContainer>
         </Content> 
         <Wave />
