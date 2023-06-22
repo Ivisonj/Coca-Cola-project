@@ -27,7 +27,7 @@ export default function Amount(props: AmountProps) {
 
     const whiteButton = {
         backgroundColor: '#fff',
-        borderColor: 'red',
+        borderColor: '#000',
         color: 'red'
     }
 
@@ -38,7 +38,7 @@ export default function Amount(props: AmountProps) {
     }
 
     const redNumber = {
-        color: 'red'
+        color: '#000'
     }
 
     const NumberColor = props.type === 'firtsType' ? whiteNumber : redNumber

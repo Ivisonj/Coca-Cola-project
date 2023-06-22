@@ -6,6 +6,7 @@ import Market from '@/components/market'
 import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
 import AddProductButton from '@/components/buttons/addProductButton'
+import Amount from '@/components/amount'
 
 
 import { LeftContainer, RightContainer, CarouselContent, ProductInfor, Title, TextContent } from './style'
@@ -59,7 +60,8 @@ export default function Home() {
                     </Carousel>
                 </CarouselContent>
                 <ProductInfor>
-                    <AddProductButton></AddProductButton>
+                    <Amount type=''/>
+                    <AddProductButton />
                 </ProductInfor>
             </RightContainer>
         </Content> 

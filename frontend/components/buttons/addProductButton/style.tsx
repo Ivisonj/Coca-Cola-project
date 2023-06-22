@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const StyleButton = styled.button `
     width: 70px;
     height: 65px;
-    margin: 5px;
+    margin: 10px;
     background-color: #fff;
     border-radius: 50px;
     border: none;
@@ -14,7 +14,7 @@ export const StyleButton = styled.button `
     &.active {
         width: 280px;
         height: 70px;
-        margin: 5px;
+        margin: 10px;
         background-color: #00FF00;
         border-radius: 40px;
         border: none;

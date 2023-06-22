@@ -2,10 +2,11 @@ import styled from "styled-components"
 
 export const Container = styled.div `
     position: absolute;
-    width: 18%;
+    width: 9%;
     height: 60px;
     right: 0px;
     z-index: 3;
+    transition: 0.5s all ease-in-out;
 
     &.expanded {
         position: absolute;
@@ -13,7 +14,6 @@ export const Container = styled.div `
         height: 100%;
         right: 0px;
         z-index: 3;
-        background-color: blue;
         transition: 0.5s all ease-in-out;
     }
 ` 
