@@ -1,6 +1,6 @@
 'use client'
 import React from "react"
-import { Container, Row, Logo } from './styles'
+import { Container, Row } from './styles'
 import { CgMenuGridR } from 'react-icons/cg'
 
 export default function Header() {

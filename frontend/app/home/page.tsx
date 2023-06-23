@@ -15,19 +15,23 @@ import { LeftContainer, RightContainer, CarouselContent, ProductInfor, Title, Te
 const contentCards = [
     {
       name: "Coca-1",
-      img: '/images/coca-1.png'
+      img: '/images/coca-1.png', 
+      price: 5.99
     },
     {
       name: "Coca-2",
-      img: '/images/coca-2.png'
+      img: '/images/coca-2.png',
+      price: 7.10
     },
     {
       name: "Coca-3",
-      img: '/images/coca-3.png'
+      img: '/images/coca-3.png',
+      price: 9.50
     },
     {
       name: "Coca-4",
-      img: '/images/coca-4.png'
+      img: '/images/coca-4.png',
+      price: 10.00
     },
    
 ]
@@ -54,7 +58,8 @@ export default function Home() {
                             <Card 
                                 key={i}
                                 name={contentCards[i].name}
-                                img={contentCards[i].img}                   
+                                img={contentCards[i].img}   
+                                price={contentCards[i].price}          
                             />
                         ))}
                     </Carousel>

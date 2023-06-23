@@ -85,20 +85,3 @@ export const Text = styled.h1 `
     font-size: 1.2rem;
     color: #fff;
 `
-
-
- 
-// width: 25%;
-// height: 100%;
-// background-color: red;
-// display: flex;
-// align-items: center;
-// justify-content: center;
-
-// &.expanded {
-//     width: 70%;
-//     height: 1095px;
-//     background-color: blue;
-//     display: flex;
-//     flex-direction: column;
-// }

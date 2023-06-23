@@ -11,19 +11,19 @@ export const CardContainer = styled.div `
     transition: all 0.3s ease-out;
 `
 
-export const ProductName = styled.h2 `
-    text-align: center;
-    font-size: 2rem;
-    font-weight: bold;
-    margin: 0 0 0.7em;
-    color: #1f2937;
-
-    transition: all 0.3s ease-out;
-    opacity: var(--ativo);
-    user-select: none;
-`
 export const ProductImage = styled.img<{ increaseImg: boolean }> `
     width: ${(props) => (props.increaseImg ? '130%' : '70%')};
     height: ${(props) => (props.increaseImg ? '150%' : '70%')};
     transition: 0.5s all ease-in-out;
+    margin-top: ${(props) => (props.increaseImg ? '130px' : '0px')};
+`
+
+export const ProductPrice = styled.h3<{ increaseImg: boolean }> `
+    position: absolute;
+    display: ${(props) => (props.increaseText ? 'flex' : 'none')};
+    left: -70px;
+    top: 170px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
 `

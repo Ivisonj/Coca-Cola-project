@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 export const Section = styled.section`
@@ -44,7 +43,7 @@ export const WaveContainer = styled.div`
         width: 230%;
         height: 200%;
         background-color: #f5f5f5;
-        top: -113%;
+        top: -115%;
         border-radius: 40%;
     }
 
@@ -55,10 +54,4 @@ export const WaveContainer = styled.div`
     &.right-wave-animation::before {
         animation: ${rightWaveAnimation} 2s;
     }
-`;
-
-export const Button = styled.button`
-    position: absolute;
-    z-index: 5;
-    margin: 20px;
 `;

@@ -1,7 +1,6 @@
 import React from "react";
 
 import { StyleButton } from "./style";
-import { type } from "os";
 
 interface ButtonProps {
     children?: string
