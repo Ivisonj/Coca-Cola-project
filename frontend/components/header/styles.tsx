@@ -7,7 +7,7 @@ export const Container = styled.div `
     background-color: #fff;
     // box-shadow: 0px  2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     flex-direction: row;
     z-index: 2;
 `
@@ -15,6 +15,5 @@ export const Container = styled.div `
 export const Row = styled.div `
     width: 33%;
     height: 100%;
-    display: flex;
-    align-items: center;
+    display: grid;
 `

@@ -10,12 +10,21 @@ export const Section = styled.section`
     height: 100vh;
 `;
 
-const waveAnimation = keyframes`
+const leftWaveAnimation = keyframes`
     0% {
         transform: rotate(0deg);
     }
     100% {
         transform: rotate(180deg);
+    }
+`;
+
+const rightWaveAnimation = keyframes`
+    0% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(0deg);
     }
 `;
 
@@ -37,7 +46,19 @@ export const WaveContainer = styled.div`
         background-color: #f5f5f5;
         top: -113%;
         border-radius: 40%;
-        animation: ${waveAnimation} 3s;
+    }
+
+    &.left-wave-animation::before {
+        animation: ${leftWaveAnimation} 2s;
+    }
+
+    &.right-wave-animation::before {
+        animation: ${rightWaveAnimation} 2s;
     }
 `;
 
+export const Button = styled.button`
+    position: absolute;
+    z-index: 5;
+    margin: 20px;
+`;

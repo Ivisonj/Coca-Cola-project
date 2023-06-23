@@ -25,6 +25,10 @@ export const Icon = styled.div `
     justify-content: center;
     background-color: red;
     cursor: pointer;
+
+    &.justify {
+        justify-content: space-around;
+    }
 `
 
 export const ProductDetail = styled.div `

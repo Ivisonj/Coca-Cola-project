@@ -1,7 +1,9 @@
 import React, { createContext, useState, Children, ReactNode } from "react";
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
+import { useRightButton, useLeftButton } from '../../../stores/useStore'
 
 import { CarouselContainer, GeneralContent, NavButton } from './style'
+
 
 export const CarouselContext = createContext<{ currentActive: number; index: number }>({
     currentActive: 0,
@@ -17,6 +19,34 @@ interface CarouselProps {
 
 export default function Carousel({ children, totalCards }: CarouselProps ) {
     const [currentActive, setCurrentActive] = useState(0)
+    const { rightButtonState, setRightButtonState } = useRightButton()
+    const { leftButtonState, setLeftButtonState } = useLeftButton()
+
+    const rightHandleClick = () => {
+        setRightButtonState(true)
+        setTimeout(() => {
+            setRightButtonState(false)
+        }, 2000)
+        console.log('direitoooo', rightButtonState)
+    }
+    
+    const leftHandleClick = () => {
+        setLeftButtonState(true)
+        setTimeout(() => {
+            setLeftButtonState(false)
+        }, 2000)
+        console.log('esquerdoooo', leftButtonState)
+    }
+
+    const incrementNumber = () => {
+        setCurrentActive((i) => i + 1)
+        leftHandleClick()
+    }
+
+    const decrementNumber = () => {
+        setCurrentActive((i) => i - 1)
+        rightHandleClick()
+    } 
 
     return (
         <>
@@ -25,7 +55,7 @@ export default function Carousel({ children, totalCards }: CarouselProps ) {
                     {currentActive > 0 && (
                         <NavButton 
                             className="toLeft"
-                            onClick={() => setCurrentActive((i) => i - 1)}
+                            onClick={decrementNumber}
                         >
                             <AiOutlineLeft color="red"/>
                         </NavButton>                    
@@ -53,7 +83,7 @@ export default function Carousel({ children, totalCards }: CarouselProps ) {
                     {currentActive < totalCards - 1 && (
                         <NavButton 
                             className="toRight"
-                            onClick={() => setCurrentActive((i) => i + 1)}
+                            onClick={incrementNumber}
                         >
                             <AiOutlineRight color="red"/>
                         </NavButton>                    
