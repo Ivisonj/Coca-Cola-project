@@ -15,13 +15,13 @@ export const ProductImage = styled.img<{ increaseImg: boolean }> `
     width: ${(props) => (props.increaseImg ? '130%' : '70%')};
     height: ${(props) => (props.increaseImg ? '150%' : '70%')};
     transition: 0.5s all ease-in-out;
-    margin-top: ${(props) => (props.increaseImg ? '130px' : '0px')};
+    margin-top: ${(props) => (props.increaseImg ? '90px' : '0px')};
 `
 
 export const ProductPrice = styled.h3<{ increaseImg: boolean }> `
     position: absolute;
     display: ${(props) => (props.increaseText ? 'flex' : 'none')};
-    left: -70px;
+    left: -80px;
     top: 170px;
     font-size: 2rem;
     font-weight: bold;

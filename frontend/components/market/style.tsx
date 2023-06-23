@@ -36,7 +36,6 @@ export const ProductDetail = styled.div `
     height: 65%;
     display: flex;
     align-items: center;
-    // justify-content: center;
     flex-direction: column;
     background-color: red;
 
@@ -50,7 +49,6 @@ export const PurchaseConfirmation = styled.div `
     height: 25%;
     display: flex;
     align-items: center;
-    // justify-content: center;
     flex-direction: column;
     background-color: #fff;
 
