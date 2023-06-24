@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Container, Icon, ProductDetail, PurchaseConfirmation, Product, ProductName, Text } from "./style"
 import Amount from '../amount'
-import MarketButton from '../buttons/marketButton'
+import MainButton from '../buttons/mainButton'
 import { BsFillCartFill } from 'react-icons/bs'
 import { IoMdArrowBack } from 'react-icons/io'
 import { useStore } from '@/stores/useStore'
@@ -38,7 +38,7 @@ export default function Market() {
         <PurchaseConfirmation className={!isVisible ? 'donShowDisplay' : null}>
           <Text style={{ color: "#000"}}>Total</Text>
           <Text style={{ color: "#000"}}>R$10,00</Text>
-          <MarketButton type='primary'>Finalizar Pedido</MarketButton>
+          <MainButton type='primary'>Finalizar Pedido</MainButton>
         </PurchaseConfirmation>
       </Container>
     </>

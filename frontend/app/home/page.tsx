@@ -1,7 +1,6 @@
 'use client'
 import Hearder from '@/components/header'
 import Wave from '@/components/wave'
-import Content from '@/components/content'
 import Market from '@/components/market'
 import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
@@ -9,7 +8,7 @@ import AddProductButton from '@/components/buttons/addProductButton'
 import Amount from '@/components/amount'
 
 
-import { LeftContainer, RightContainer, CarouselContent, ProductInfor, Title, TextContent } from './style'
+import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, TextContent } from './style'
 
 
 const contentCards = [
@@ -43,15 +42,15 @@ export default function Home() {
         <>
         <Hearder />
         <Market />
-        <Content>
-            <LeftContainer>
+        <Container>
+            <LeftColumn>
                 <Title>Vai uma Coca?</Title>
                 <TextContent>
                     Selecione o produto desejado <br/>
                     e adicione ao carrinho. 
                 </TextContent>
-            </LeftContainer>
-            <RightContainer>
+            </LeftColumn>
+            <RightColumn>
                 <CarouselContent>
                     <Carousel totalCards={totalCards}>
                         {contentCards.map((_, i) => (
@@ -68,8 +67,8 @@ export default function Home() {
                     <Amount type=''/>
                     <AddProductButton />
                 </ProductInfor>
-            </RightContainer>
-        </Content> 
+            </RightColumn>
+        </Container> 
         <Wave />
         </>
     )

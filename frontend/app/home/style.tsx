@@ -1,6 +1,15 @@
 import styled from "styled-components"
 
-export const LeftContainer = styled.div `
+export const Container = styled.div `
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    background-color: transparent;
+    display: flex;
+`
+
+export const LeftColumn = styled.div `
     width: 45%;
     height: 80%;
     display: flex;
@@ -9,7 +18,7 @@ export const LeftContainer = styled.div `
     justify-content: center; 
 `
 
-export const RightContainer = styled.div `
+export const RightColumn = styled.div `
     width: 55%;
     height: 95%;
     display: flex;

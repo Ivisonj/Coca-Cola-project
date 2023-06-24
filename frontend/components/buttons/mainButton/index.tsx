@@ -7,7 +7,7 @@ interface ButtonProps {
     type?: string
 }
 
-export default function MarketButton(props: ButtonProps) {
+export default function MainButton(props: ButtonProps) {
     return (
         <>
             <StyleButton className={'primary'}>
