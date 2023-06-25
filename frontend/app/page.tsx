@@ -1,9 +1,29 @@
 'use client'
-import Image from 'next/image'
-import styles from './page.module.css'
+import Wave from '@/components/wave'
+import MainButton from '@/components/buttons/mainButton'
+
+import { Container, LeftColumn, RightColumn, Title, Subtitle, BoxButton, BoxText } from './page.module.tsx'
 
 export default function Home() {
   return (
-    <h1>Bora bill</h1>
+    <>
+      <Container>
+        <LeftColumn>
+          <Title>Seja Bem-vindo(a)!</Title>
+          <Subtitle>
+            Desfrute de uma conexão exclusiva com a Coca-Cola! <br/>
+            Escolha uma opção para se conectar de acordo com suas necessidades:
+          </Subtitle>
+        </LeftColumn>
+        <RightColumn>
+          <BoxButton>
+            <BoxText>O que você é?</BoxText>
+            <MainButton margin='20px' width='270px' link='/'>Sou uma empresa</MainButton>
+            <MainButton width='270px' link='/'>Sou usuário</MainButton>
+          </BoxButton>
+        </RightColumn>
+      </Container>
+      <Wave type='infinite' />
+    </>
   )
 }

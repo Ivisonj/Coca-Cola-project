@@ -8,7 +8,7 @@ import AddProductButton from '@/components/buttons/addProductButton'
 import Amount from '@/components/amount'
 
 
-import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, TextContent } from './style'
+import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from './style'
 
 
 const contentCards = [
@@ -45,10 +45,10 @@ export default function Home() {
         <Container>
             <LeftColumn>
                 <Title>Vai uma Coca?</Title>
-                <TextContent>
+                <Subtitle>
                     Selecione o produto desejado <br/>
                     e adicione ao carrinho. 
-                </TextContent>
+                </Subtitle>
             </LeftColumn>
             <RightColumn>
                 <CarouselContent>

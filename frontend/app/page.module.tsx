@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import styled from 'styled-components'
+
 
 export const Container = styled.div `
     position: absolute;
@@ -20,29 +21,12 @@ export const LeftColumn = styled.div `
 
 export const RightColumn = styled.div `
     width: 55%;
-    height: 95%;
+    height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     overflow: hidden;
-`
-
-export const CarouselContent = styled.div `
-    width: 100%;
-    height: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-export const ProductInfor = styled.div `
-    width: 100%;
-    height: 30%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
 `
 
 export const Title = styled.h1 `
@@ -57,5 +41,24 @@ export const Subtitle = styled.p `
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
+    color: #000;
+    padding: 0px 0px 0px 60px;
+`
+
+export const BoxButton = styled.div `
+    width: 50%;
+    height: 80%;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+export const BoxText = styled.h1 `
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 20px;
     color: #000;
 `

@@ -1,9 +1,10 @@
 import styled from 'styled-components'
 
 export const StyleButton = styled.button `
-        width: 160px;
-        height: 35px;
-        margin: 5px;
+        width: ${props => props.width};
+        height: 40px;
+        padding: 10px;
+        margin: ${props => props.margin};
         color: #fff;
         background-color: red;
         border-radius: 7px;

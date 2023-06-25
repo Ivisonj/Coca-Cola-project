@@ -9,6 +9,15 @@ export const Section = styled.section`
     height: 100vh;
 `;
 
+const infiniteWaveAnimation = keyframes`
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+`;
+
 const leftWaveAnimation = keyframes`
     0% {
         transform: rotate(0deg);
@@ -53,5 +62,9 @@ export const WaveContainer = styled.div`
 
     &.right-wave-animation::before {
         animation: ${rightWaveAnimation} 2s;
+    }
+
+    &.infinite-animation::before {
+        animation: ${infiniteWaveAnimation} 12s infinite;
     }
 `;
