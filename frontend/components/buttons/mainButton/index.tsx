@@ -6,7 +6,7 @@ interface ButtonProps {
     children?: string
     width?: string 
     margin?: string
-    link: string 
+    link?: string 
 }
 
 export default function MainButton({ children, width, margin, link }: ButtonProps) {

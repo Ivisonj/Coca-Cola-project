@@ -18,8 +18,8 @@ export default function Home() {
         <RightColumn>
           <BoxButton>
             <BoxText>O que você é?</BoxText>
-            <MainButton margin='20px' width='270px' link='/'>Sou uma empresa</MainButton>
-            <MainButton width='270px' link='/'>Sou usuário</MainButton>
+            <MainButton margin='20px' width='270px' link='/signin/company-signin'>Sou uma empresa</MainButton>
+            <MainButton width='270px' link='/signin'>Sou usuário</MainButton>
           </BoxButton>
         </RightColumn>
       </Container>

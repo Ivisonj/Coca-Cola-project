@@ -38,9 +38,9 @@ export default function Market() {
         <PurchaseConfirmation className={!isVisible ? 'donShowDisplay' : null}>
           <Text style={{ color: "#000"}}>Total</Text>
           <Text style={{ color: "#000"}}>R$10,00</Text>
-          <MainButton type='primary'>Finalizar Pedido</MainButton>
+          <MainButton link='/' type='primary'>Finalizar Pedido</MainButton>
         </PurchaseConfirmation>
       </Container>
     </>
-  );
+  )
 }
