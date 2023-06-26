@@ -23,7 +23,7 @@ export default function SignIn() {
                             <Input type="password" label="Senha" />
                             <MainButton width='270px' link='/'>Entrar</MainButton>
                         </form>
-                        <CreateAccount href='/'>Criar uma conta agora</CreateAccount>
+                        <CreateAccount href='/signup'>Criar uma conta agora</CreateAccount>
                     </FormBox>
                 </RightColumn>
             </Container>
