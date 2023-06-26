@@ -1,8 +1,11 @@
 'use client'
 import Wave from '@/components/wave'
 import MainButton from '@/components/buttons/mainButton'
+import HomeButton from '@/components/homeButton'
+import { FaUser } from 'react-icons/fa'
+import { BsFillBuildingFill } from 'react-icons/bs'
 
-import { Container, LeftColumn, RightColumn, Title, Subtitle, BoxButton, BoxText } from './page.module.tsx'
+import { Container, LeftColumn, RightColumn, Title, Subtitle, Icon, TextButton } from './page.module.tsx'
 
 export default function Home() {
   return (
@@ -16,11 +19,18 @@ export default function Home() {
           </Subtitle>
         </LeftColumn>
         <RightColumn>
-          <BoxButton>
-            <BoxText>O que você é?</BoxText>
-            <MainButton margin='20px' width='270px' link='/signin/company'>Sou uma empresa</MainButton>
-            <MainButton width='270px' link='/signin'>Sou usuário</MainButton>
-          </BoxButton>
+          <HomeButton link='/signin/company'>
+            <Icon>
+              <BsFillBuildingFill style={{ fontSize: '1.5rem', color: '#fff' }}/>
+            </Icon>
+            <TextButton>sou uma empresa</TextButton>
+          </HomeButton>
+          <HomeButton link='/signin'>
+            <Icon>
+              <FaUser style={{ fontSize: '1.5rem', color: '#fff' }}/>
+            </Icon>
+            <TextButton>sou usuário</TextButton>
+          </HomeButton>
         </RightColumn>
       </Container>
       <Wave type='infinite' />

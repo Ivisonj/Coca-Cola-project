@@ -45,20 +45,19 @@ export const Subtitle = styled.p `
     padding: 0px 0px 0px 60px;
 `
 
-export const BoxButton = styled.div `
-    width: 50%;
-    height: 80%;
-    background-color: #fff;
-    border-radius: 15px;
-    box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.4);
+export const Icon = styled.div `
+    width: 30%;
+    height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 `
-export const BoxText = styled.h1 `
-    font-style: normal;
-    font-weight: bold;
-    font-size: 1.5rem;
-    margin: 20px;
-    color: #000;
+export const TextButton = styled.h1 `
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;   
 `
