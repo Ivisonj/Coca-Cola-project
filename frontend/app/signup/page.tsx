@@ -26,7 +26,7 @@ export default function SignUp() {
                             <Input type="password" label="Confirmar Senha" />
                             <MainButton width='270px' link='/'>Entrar</MainButton>
                         </form>
-                        <BoxLink href='/sigin'>Cadastrar</BoxLink>
+                        <BoxLink href='/signin'>Fazer login</BoxLink>
                     </FormBox>
                 </RightColumn>
             </Container>

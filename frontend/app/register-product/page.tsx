@@ -19,7 +19,7 @@ export default function RegisterProduct() {
                         <Input type="text" label="Nome do Produto"/>
                         <Input type="number" label="Preço do Produto"/>
                         <UploadInput type="file" label="Foto do Produto" />
-                        <MainButton link="/register-product">finalizar</MainButton>
+                        <MainButton link="/registered-products">finalizar</MainButton>
                     </FormBox>
                 </form>
             </Container>

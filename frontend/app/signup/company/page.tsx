@@ -27,7 +27,7 @@ export default function CompanySignUp() {
                             <Input type="text" label="Endereço" />
                             <MainButton width='270px' link='/'>Cadastrar</MainButton>
                         </form>
-                        <BoxLink href='/sigin'>Fazer login</BoxLink>
+                        <BoxLink href='/signin'>Fazer login</BoxLink>
                     </FormBox>
                 </RightColumn>
             </Container>

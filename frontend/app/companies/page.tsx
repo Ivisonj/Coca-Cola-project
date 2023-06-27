@@ -34,7 +34,7 @@ export default function Companies() {
             <Header />
             <Container>
                 <TitleContainer>
-                    <Title>Restaurantes Cadastrados</Title>
+                    <Title>Restaurantes</Title>
                 </TitleContainer>
                 <CardContainer>
                     {companyInformation.map((item, index) => (
