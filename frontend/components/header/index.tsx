@@ -24,7 +24,7 @@ export default function Header() {
         <>
             <Container>
                 <Row>
-                    <CgMenuGridR style={iconStyle} />
+                    {/* <CgMenuGridR style={iconStyle} /> */}
                 </Row>
                 <Row>
                     <img style={logoStyle} src="https://logosmarcas.net/wp-content/uploads/2020/08/Coca-Cola-Logo-1987-2009.png" alt="coca-cola" />
