@@ -1,22 +1,21 @@
 import React from "react";
 import { StyleButton } from "./style";
-import Link from "next/link";
 
 interface ButtonProps {
     children?: string
     width?: string 
     margin?: string
     link?: string 
+    onClick?: () => void
+    type?: "button" | "submit"
 }
 
-export default function MainButton({ children, width, margin, link }: ButtonProps) {
+export default function MainButton({ children, width, margin, onClick, type= 'button' }: ButtonProps) {
     return (
         <>
-            <Link href={link}>
-                <StyleButton width={width} margin={margin}>
-                    {children}
-                </StyleButton>
-            </Link>
+            <StyleButton width={width} margin={margin} type={type} onClick={onClick}>
+                {children}
+            </StyleButton>
         </>
     )
 }

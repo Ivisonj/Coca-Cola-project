@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const Container = styled.div `
     position: absolute;
     width: 100vw;
@@ -70,4 +69,13 @@ export const BoxLink = styled.a `
     color: red;
     margin-top: 20px;
     margin-bottom: 40px;
+`
+
+export const Form = styled.form`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
 `
