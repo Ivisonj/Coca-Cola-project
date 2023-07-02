@@ -19,11 +19,11 @@ module.exports = app => {
             equalsOrError(company.password, company.confirmPassword, 'Senhas não conferem')
             existsOrError(company.address, 'Endereço não informado')
             
-            const checkEmailFromDB = await app.db('company')
+            const existEmailInDb = await app.db('company')
                 .where({ email: company.email}).first()
 
             if(!company.id) {
-                notExistsOrError(checkEmailFromDB, 'Usuário já cadastrado')
+                notExistsOrError(existEmailInDb, 'Usuário já cadastrado')
             }
 
         } catch(msg) {

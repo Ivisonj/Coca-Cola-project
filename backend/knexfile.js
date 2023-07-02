@@ -1,3 +1,4 @@
+const { db } = require('./.env')
 // Update with your config settings.
 
 /**
@@ -5,11 +6,7 @@
  */
 module.exports = {
   client: 'postgresql',
-  connection: {
-    database: 'cocacola',
-    user:     'postgres',
-    password: '12345678'
-  },
+  connection: db,
   pool: {
     min: 2,
     max: 10
