@@ -81,7 +81,8 @@ export const Form = styled.form`
 `
 
 export const ErrorMsg = styled.span `
-    font-size: .9rem;
+    font-size: .7rem;
     font-weight: 100;
     color: red;
+    margin: 5px 0px;
 `

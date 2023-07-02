@@ -1,11 +1,12 @@
 'use client'
 import React from "react"
 import { useForm } from "react-hook-form"
+import { zodResolver } from '@hookform/resolvers/zod'
+import z from 'zod'
+import axios from "axios"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
 import MainButton from "@/components/buttons/mainButton"
-import z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { baseApiUrl } from "../page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
@@ -20,11 +21,17 @@ type createUserFormData = z.infer<typeof createUserFormSchema>
 
 export default function SignUp() {
     const { register, handleSubmit, formState: { errors } } = useForm<createUserFormData>({
-        resolver: zodResolver(createUserFormSchema)
+        resolver: zodResolver(createUserFormSchema), 
+        mode: 'onChange'
     })
 
-    function createUser(data: any) {
-        console.log('resultadoooo', data)
+    const  createUser = async (data) => {
+        try {
+            const response = await axios.post(`${baseApiUrl}/users`, data)
+            console.log(response.data)
+        } catch(error) {
+            console.error(error)
+        }
     }
 
     return (
