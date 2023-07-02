@@ -79,3 +79,9 @@ export const Form = styled.form`
   align-items: center;
   padding-top: 15px;
 `
+
+export const ErrorMsg = styled.span `
+    font-size: .9rem;
+    font-weight: 100;
+    color: red;
+`

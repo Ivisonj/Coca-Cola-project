@@ -5,6 +5,8 @@ import HomeButton from '@/components/homeButton'
 import { FaUser } from 'react-icons/fa'
 import { BsFillBuildingFill } from 'react-icons/bs'
 
+export const baseApiUrl = 'http://localhost:8080'
+
 import { Container, LeftColumn, RightColumn, Title, Subtitle, Icon, TextButton } from './page.module.tsx'
 
 export default function Home() {

@@ -4,11 +4,24 @@ import { useForm } from "react-hook-form"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
 import MainButton from "@/components/buttons/mainButton"
+import z from 'zod'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { baseApiUrl } from "../page"
 
-import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form } from './style'
+import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
+
+const createUserFormSchema = z.object({
+    name: z.string().nonempty('Campo obrigatório'),
+    email: z.string().nonempty('Campo obrigatório').email('Formato de E-mail inválido'),
+    password: z.string().nonempty('Campo obrigatório').min(4, 'No mínimo 4 caracteres'),
+})
+
+type createUserFormData = z.infer<typeof createUserFormSchema>
 
 export default function SignUp() {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm<createUserFormData>({
+        resolver: zodResolver(createUserFormSchema)
+    })
 
     function createUser(data: any) {
         console.log('resultadoooo', data)
@@ -27,11 +40,13 @@ export default function SignUp() {
                     <FormBox>
                         <BoxText>Preencha os campos abaixo:</BoxText>
                         <Form onSubmit={handleSubmit(createUser)}>
-                            <Input type="text" label="Nome Completo" register={register('nome')} />
+                            <Input type="text" label="Nome Completo" register={register('name')} />
+                            {errors.name && <ErrorMsg>{errors.name.message}</ErrorMsg>}
                             <Input type="email" label="E-mail" register={register('email')} />
-                            <Input type="password" label="Senha" register={register('senha')} />
-                            <Input type="password" label="Confirmar Senha" register={register('confirmarSenha')} />
-                            <MainButton width="75%" type="submit">Cadastrar</MainButton>
+                            {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
+                            <Input type="password" label="Senha" register={register('password')} />
+                            {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
+                            <MainButton margin="20px 0px" width="75%" type="submit">Cadastrar</MainButton>
                         </Form>
                         <BoxLink href='/signin'>Fazer login</BoxLink>
                     </FormBox>

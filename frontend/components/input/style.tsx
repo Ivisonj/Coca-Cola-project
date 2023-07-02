@@ -6,6 +6,7 @@ export const InputContainer = styled.div`
   height: auto;
   display: flex;
   justify-content: center;
+  margin-top: 20px;
 `;
 
 export const StyleInput = styled.input`
@@ -13,7 +14,6 @@ export const StyleInput = styled.input`
   padding: 10px 0;
   font-size: 16px;
   color: #000;
-  margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid red;
   outline: none;
