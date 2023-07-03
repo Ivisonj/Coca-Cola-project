@@ -1,5 +1,5 @@
 'use client'
-import React from "react"
+import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
@@ -20,6 +20,9 @@ const createUserFormSchema = z.object({
 type createUserFormData = z.infer<typeof createUserFormSchema>
 
 export default function SignUp() {
+
+    const [ errorResponse, setErrorResponse ] = useState()
+
     const { register, handleSubmit, formState: { errors } } = useForm<createUserFormData>({
         resolver: zodResolver(createUserFormSchema), 
         mode: 'onChange'
@@ -28,12 +31,12 @@ export default function SignUp() {
     const  createUser = async (data) => {
         try {
             const response = await axios.post(`${baseApiUrl}/users`, data)
-            console.log(response.data)
         } catch(error) {
             console.error(error)
+            setErrorResponse(error.response.data)
         }
     }
-
+    
     return (
         <>
             <Container>
@@ -51,6 +54,7 @@ export default function SignUp() {
                             {errors.name && <ErrorMsg>{errors.name.message}</ErrorMsg>}
                             <Input type="email" label="E-mail" register={register('email')} />
                             {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
+                            {errorResponse && <ErrorMsg>{errorResponse}</ErrorMsg>}
                             <Input type="password" label="Senha" register={register('password')} />
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
                             <MainButton margin="20px 0px" width="75%" type="submit">Cadastrar</MainButton>

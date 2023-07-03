@@ -72,3 +72,19 @@ export const BoxLink = styled.a `
     margin-top: 20px;
     margin-bottom: 40px;
 `
+
+export const Form = styled.form`
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px;
+`
+
+export const ErrorMsg = styled.span `
+    font-size: .7rem;
+    font-weight: 100;
+    color: red;
+    margin: 5px 0px;
+`
