@@ -15,8 +15,6 @@ module.exports = app => {
             existsOrError(company.name, 'Nome não informado')
             existsOrError(company.email, 'E-mail não informado')
             existsOrError(company.password, 'Senha não informada')
-            existsOrError(company.confirmPassword, 'Confirmação de senha inválida')
-            equalsOrError(company.password, company.confirmPassword, 'Senhas não conferem')
             existsOrError(company.address, 'Endereço não informado')
             
             const existEmailInDb = await app.db('company')
@@ -31,7 +29,6 @@ module.exports = app => {
         }
 
         company.password = encryptPassword(company.password)
-        delete company.confirmPassword
 
         if(!company.id) {
             app.db('company')
