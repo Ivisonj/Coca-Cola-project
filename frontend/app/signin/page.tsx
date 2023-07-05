@@ -7,6 +7,8 @@ import axios from "axios"
 import Wave from "@/components/wave"
 import MainButton from "@/components/buttons/mainButton"
 import Input from "@/components/input"
+import { useRouter } from 'next/navigation';
+import { baseApiUrl } from "../page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, CreateAccount, Form, ErrorMsg } from './style'
 
@@ -18,13 +20,36 @@ const userFormSchema = z.object({
 type userFormData = z.infer<typeof userFormSchema>
 
 export default function SignIn() {
+    const [ errorResponse, setErrorResponse ] = useState()
+    const [ token, setToken ] = useState("")
+    const router = useRouter()
+
+    axios.interceptors.request.use(
+        (config) => {
+            config.headers.Authorization = `Bearer ${token}`
+            return config
+        }, 
+        (error) => {
+            return Promise.reject(error)
+        }
+    )
+
     const { register, handleSubmit, formState: { errors } } = useForm<userFormData>({
         resolver: zodResolver(userFormSchema),
         mode: 'onChange'
     })
 
-    const userData = (data) => {
-        console.log(data)
+    const userData = async (data) => {
+        try {
+            const response = await axios.post(`${baseApiUrl}/signin`, data)
+            setToken(response.data.token)
+            if(response.status === 200) {
+                router.push('/companies')
+            }
+        } catch(error) {
+            console.error(error)
+            setErrorResponse(error.response.data)
+        }
     }
 
     return (
@@ -42,9 +67,11 @@ export default function SignIn() {
                         <Form onSubmit={handleSubmit(userData)}>
                             <Input type="text" label="E-mail" register={register('email')}/>
                             {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
+                            {errorResponse === 'Usuário não encontrado' && <ErrorMsg>{errorResponse}</ErrorMsg>}
                             <Input type="password" label="Senha" register={register('password')}/>
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
-                            <MainButton margin="40px 0px 0px 0px" width='270px' type="submit">Entrar</MainButton>
+                            {errorResponse === 'E-mail ou Senha inválidos' && <ErrorMsg>{errorResponse}</ErrorMsg>}
+                            <MainButton margin="40px 0px 0px 0px" width='75%' type="submit">Entrar</MainButton>
                         </Form>
                         <CreateAccount href='/signup'>Criar uma conta agora</CreateAccount>
                     </FormBox>

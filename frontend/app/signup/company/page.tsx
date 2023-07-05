@@ -30,7 +30,7 @@ export default function CompanySignUp() {
 
     const  createCompany = async (data) => {
         try {
-            const response = await axios.post(`${baseApiUrl}/companies`, data)
+            const response = await axios.post(`${baseApiUrl}/signup/company`, data)
             console.log(response.data)
         } catch(error) {
             console.error(error)

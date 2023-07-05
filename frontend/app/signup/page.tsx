@@ -30,7 +30,7 @@ export default function SignUp() {
 
     const  createUser = async (data) => {
         try {
-            const response = await axios.post(`${baseApiUrl}/users`, data)
+            const response = await axios.post(`${baseApiUrl}/signup`, data)
         } catch(error) {
             console.error(error)
             setErrorResponse(error.response.data)
@@ -57,7 +57,7 @@ export default function SignUp() {
                             {errorResponse && <ErrorMsg>{errorResponse}</ErrorMsg>}
                             <Input type="password" label="Senha" register={register('password')} />
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
-                            <MainButton margin="20px 0px" width="75%" type="submit">Cadastrar</MainButton>
+                            <MainButton margin="40px 0px 0px 0px" width="75%" type="submit">Cadastrar</MainButton>
                         </Form>
                         <BoxLink href='/signin'>Fazer login</BoxLink>
                     </FormBox>
