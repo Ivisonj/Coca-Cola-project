@@ -7,7 +7,7 @@ import axios from "axios"
 import Wave from "@/components/wave"
 import MainButton from "@/components/buttons/mainButton"
 import Input from "@/components/input"
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "../page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, CreateAccount, Form, ErrorMsg } from './style'

@@ -7,6 +7,7 @@ import axios from "axios"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
 import MainButton from "@/components/buttons/mainButton"
+import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "@/app/page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
@@ -21,7 +22,9 @@ const createCompanyformSchema = z.object({
 type createCompanyFormData = z.infer<typeof createCompanyformSchema>  
 
 export default function CompanySignUp() {
+
     const [ errorResponse, setErrorResponse ] = useState()
+    const router = useRouter()
 
     const { register, handleSubmit, formState: { errors } } = useForm<createCompanyFormData>({
         resolver: zodResolver(createCompanyformSchema),
@@ -31,7 +34,10 @@ export default function CompanySignUp() {
     const  createCompany = async (data) => {
         try {
             const response = await axios.post(`${baseApiUrl}/signup/company`, data)
-            console.log(response.data)
+            console.log(response)
+            if(response.status === 204) {
+                router.push('/signin/company')
+            }
         } catch(error) {
             console.error(error)
             setErrorResponse(error.response.data)

@@ -7,6 +7,7 @@ import axios from "axios"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
 import MainButton from "@/components/buttons/mainButton"
+import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "../page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
@@ -22,6 +23,7 @@ type createUserFormData = z.infer<typeof createUserFormSchema>
 export default function SignUp() {
 
     const [ errorResponse, setErrorResponse ] = useState()
+    const router = useRouter()
 
     const { register, handleSubmit, formState: { errors } } = useForm<createUserFormData>({
         resolver: zodResolver(createUserFormSchema), 
@@ -31,6 +33,9 @@ export default function SignUp() {
     const  createUser = async (data) => {
         try {
             const response = await axios.post(`${baseApiUrl}/signup`, data)
+            if(response.status === 204) {
+                router.push('/signin')
+            }
         } catch(error) {
             console.error(error)
             setErrorResponse(error.response.data)
