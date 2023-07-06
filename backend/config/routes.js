@@ -11,7 +11,15 @@ module.exports = app => {
         .all(app.config.passport.authenticate())
         .get(app.api.user.get)
 
+    app.route('/users/:id')
+        .all(app.config.passport.authenticate())        
+        .get(app.api.user.getById)
+        
     app.route('/companies')
         .all(app.config.passport.authenticate())
         .get(app.api.company.get)
+
+    app.route('/companies/:id')
+        .all(app.config.passport.authenticate())        
+        .get(app.api.company.getById)
 }

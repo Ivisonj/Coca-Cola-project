@@ -12,11 +12,6 @@ module.exports = app => {
         const company = { ...req.body }
 
         try {
-            existsOrError(company.name, 'Nome não informado')
-            existsOrError(company.email, 'E-mail não informado')
-            existsOrError(company.password, 'Senha não informada')
-            existsOrError(company.address, 'Endereço não informado')
-            
             const existEmailInDb = await app.db('company')
                 .where({ email: company.email}).first()
 
@@ -33,7 +28,7 @@ module.exports = app => {
         if(!company.id) {
             app.db('company')
                 .insert(company)
-                .then(_ => res.status(240).send())
+                .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
         }
     }
@@ -45,5 +40,14 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get }
+    const getById = (req, res) => {
+        app.db('company')
+            .select('id', 'name', 'email', 'address')
+            .where({ id: req.params.id })
+            .first()
+            .then(company => res.json(company))
+            .catch(err => res.status(500).send(err))
+    }
+
+    return { save, get, getById }
 }
