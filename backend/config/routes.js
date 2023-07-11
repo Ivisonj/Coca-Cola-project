@@ -2,7 +2,8 @@ module.exports = app => {
     app.post('/signup', app.api.user.save)
     app.post('/signin', app.api.userAuth.signin)
     app.post('/validateToken', app.api.userAuth.validateToken)
-    
+    app.post('/recoverInformation', app.api.decodeToken.recoverUserInformation)
+
     app.post('/signup/company', app.api.company.save)
     app.post('/signin/company', app.api.companyAuth.signin)
     app.post('/companyValidateToken', app.api.companyAuth.companyValidateToken)

@@ -7,6 +7,7 @@ import z from 'zod'
 import Wave from "@/components/wave"
 import MainButton from "@/components/buttons/mainButton"
 import Input from "@/components/input"
+import Tabs from "@/components/tabs"
 import { AuthContext } from "../Context/authContext"
 
 
@@ -26,10 +27,27 @@ export default function SignIn() {
         mode: 'onChange'
     })
 
-    const { signIn, errorResponse } = useContext(AuthContext)
+    const { signIn, companySignIn, errorResponse } = useContext(AuthContext)
+    console.log(errorResponse)
 
-    const handleSignin = async (data) => {
+    const [ state, setState ] = useState('user')
+
+    const userSignin = (data) => {
+        console.log('user',data)
         signIn(data)
+    }
+
+    const companySignin = (data) => {
+        console.log('company', data)
+        companySignIn(data)
+    }
+
+    const handleClick = (data) => {
+        if(data === 'user') {
+            setState('user')
+        } else if(data === 'company') {
+            setState('company')
+        }
     }
 
     return (
@@ -43,11 +61,16 @@ export default function SignIn() {
                 </LeftColumn>
                 <RightColumn>
                     <FormBox>
-                        <BoxText>Preencha com seu E-mail e Senha:</BoxText>
-                        <Form onSubmit={handleSubmit(handleSignin)}>
+                        <Tabs 
+                            userFunc={() => handleClick('user')} 
+                            companyFunc={() => handleClick('company')} 
+                            userClassName={state === 'user' ? 'selected' : ''}
+                            companyClassName={state === 'company' ? 'selected' : ''}
+                        />
+                        <Form onSubmit={handleSubmit(state === 'user' ? userSignin : companySignin)}>
                             <Input type="text" label="E-mail" register={register('email')}/>
                             {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
-                            {errorResponse === 'Usuário não encontrado' && <ErrorMsg>{errorResponse}</ErrorMsg>}
+                            {errorResponse === 'Usuário não encontrado' || 'Empresa não encontrada' && <ErrorMsg>{errorResponse}</ErrorMsg>}
                             <Input type="password" label="Senha" register={register('password')}/>
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
                             {errorResponse === 'E-mail ou Senha inválidos' && <ErrorMsg>{errorResponse}</ErrorMsg>}

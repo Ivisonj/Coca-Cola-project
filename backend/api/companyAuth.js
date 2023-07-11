@@ -26,7 +26,7 @@ module.exports = app => {
         }
 
         res.json({
-            ...payload,
+            // ...payload,
             token: jwt.encode(payload, authSecret)
         })
     }

@@ -4,16 +4,16 @@ export default function middleware(request: NextRequest) {
 
     const token = request.cookies.get('cocacola-token')?.value
 
-    const homeURL = new URL('/', request.url)
+    const signinURL = new URL('/signin', request.url)
 
     if(!token) {
         if(request.nextUrl.pathname === '/signin') {
             return NextResponse.next()
         }
-        return NextResponse.redirect(homeURL)
+        return NextResponse.redirect(signinURL)
     }
 }
 
 export const config = {
-    matcher: ['/signin', '/companies/:path*']
+    matcher: ['/signin', '/dashboard/:path*']
 }
