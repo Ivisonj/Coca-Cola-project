@@ -29,7 +29,7 @@ const registeredProducts = [
     },
 ]
 
-export default function RegisteredProducts() {
+export default function CompanyDashboard() {
     return (
         <>
             <Header />

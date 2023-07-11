@@ -54,6 +54,7 @@ export const FormBox = styled.div `
     flex-direction: column;
     align-items: center;
 `
+
 export const BoxText = styled.h1 `
     font-style: normal;
     font-weight: bold;

@@ -1,14 +1,14 @@
 'use client'
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
-import axios from "axios"
+
 import Wave from "@/components/wave"
 import MainButton from "@/components/buttons/mainButton"
 import Input from "@/components/input"
-import { useRouter } from 'next/navigation'
-import { baseApiUrl } from "../page"
+import { AuthContext } from "../Context/authContext"
+
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, CreateAccount, Form, ErrorMsg } from './style'
 
@@ -20,36 +20,16 @@ const userFormSchema = z.object({
 type userFormData = z.infer<typeof userFormSchema>
 
 export default function SignIn() {
-    const [ errorResponse, setErrorResponse ] = useState()
-    const [ token, setToken ] = useState("")
-    const router = useRouter()
-
-    axios.interceptors.request.use(
-        (config) => {
-            config.headers.Authorization = `Bearer ${token}`
-            return config
-        }, 
-        (error) => {
-            return Promise.reject(error)
-        }
-    )
 
     const { register, handleSubmit, formState: { errors } } = useForm<userFormData>({
         resolver: zodResolver(userFormSchema),
         mode: 'onChange'
     })
 
-    const userData = async (data) => {
-        try {
-            const response = await axios.post(`${baseApiUrl}/signin`, data)
-            setToken(response.data.token)
-            if(response.status === 200) {
-                router.push('/companies')
-            }
-        } catch(error) {
-            console.error(error)
-            setErrorResponse(error.response.data)
-        }
+    const { signIn, errorResponse } = useContext(AuthContext)
+
+    const handleSignin = async (data) => {
+        signIn(data)
     }
 
     return (
@@ -64,7 +44,7 @@ export default function SignIn() {
                 <RightColumn>
                     <FormBox>
                         <BoxText>Preencha com seu E-mail e Senha:</BoxText>
-                        <Form onSubmit={handleSubmit(userData)}>
+                        <Form onSubmit={handleSubmit(handleSignin)}>
                             <Input type="text" label="E-mail" register={register('email')}/>
                             {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
                             {errorResponse === 'Usuário não encontrado' && <ErrorMsg>{errorResponse}</ErrorMsg>}

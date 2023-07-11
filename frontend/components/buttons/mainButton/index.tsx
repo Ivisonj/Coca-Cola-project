@@ -14,7 +14,7 @@ export default function MainButton({ children, width, margin, type= 'button', on
 
     return (
         <>
-            <StyleButton width={width} margin={margin} type={type} onClick={onclick}>
+            <StyleButton width={width} margin={margin} type={type} onClick={onClick}>
                 {children}
             </StyleButton>
         </>

@@ -1,4 +1,6 @@
+'use client'
 import { GlobalStyle }  from './globals'
+import { AuthProvider } from './Context/authContext'
 import { Inter, Open_Sans, Roboto } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -17,9 +19,14 @@ export default function RootLayout({
   return (
     <>
     <html lang="en">
-      <body className={openSans.className}>{children}</body>
+      <body className={openSans.className}>
+        <AuthProvider>
+          {children}
+        </AuthProvider>
+      </body>
     </html>
     <GlobalStyle />
     </>
   )
 }
+
