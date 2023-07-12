@@ -2,16 +2,20 @@
 import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
+import { FaUser } from 'react-icons/fa'
+import { BsFillBuildingFill } from 'react-icons/bs'
 import z from 'zod'
 
+import ComeBack from "@/components/comeback"
 import Wave from "@/components/wave"
 import MainButton from "@/components/buttons/mainButton"
 import Input from "@/components/input"
 import Tabs from "@/components/tabs"
+import CreateAccountButton from "@/components/buttons/createAccountButton"
 import { AuthContext } from "../Context/authContext"
 
 
-import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, CreateAccount, Form, ErrorMsg } from './style'
+import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, Content, Text, ButtonsContainer, Form, ErrorMsg } from './style'
 
 const userFormSchema = z.object({
     email: z.string().nonempty('Campo obrigatório').email('Formato de E-mail inválido'),
@@ -53,6 +57,7 @@ export default function SignIn() {
     return (
         <>
             <Container>
+                <ComeBack comeBackTo="/"/>
                 <LeftColumn>
                     <Title>Vamos nos conectar?</Title>
                     <Subtitle>
@@ -74,9 +79,19 @@ export default function SignIn() {
                             <Input type="password" label="Senha" register={register('password')}/>
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
                             {errorResponse === 'E-mail ou Senha inválidos' && <ErrorMsg>{errorResponse}</ErrorMsg>}
-                            <MainButton margin="40px 0px 0px 0px" width='75%' type="submit">Entrar</MainButton>
+                            <MainButton margin="40px 0px 15px 0px" width='75%' type="submit">Entrar</MainButton>
                         </Form>
-                        <CreateAccount href='/signup'>Criar uma conta agora</CreateAccount>
+                        <Content>
+                            <Text>Criar conta agora:</Text>
+                            <ButtonsContainer>
+                                <CreateAccountButton link="/signup">
+                                    <FaUser style={{ color: 'red', fontSize: '1.5rem' }}/>
+                                </CreateAccountButton>
+                                <CreateAccountButton link="/signup/company">
+                                    <BsFillBuildingFill style={{ color: 'red', fontSize: '1.5rem' }}/>
+                                </CreateAccountButton>
+                            </ButtonsContainer>
+                        </Content>
                     </FormBox>
                 </RightColumn>
             </Container>

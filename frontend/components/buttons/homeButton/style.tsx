@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ContainerButton = styled.div `
+export const ButtonContainer = styled.div `
     width: 30vw;
     height: 15vh;
     margin: 20px;
@@ -10,10 +10,6 @@ export const ContainerButton = styled.div `
     display: flex;
     cursor: pointer;
     transition: 0.5s all ease-in-out;
-
-    &:active {
-        background-color: #CD5C5C;
-    }
     
     &:hover {
         transform: scale(1.1);   

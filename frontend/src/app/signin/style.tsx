@@ -21,7 +21,7 @@ export const LeftColumn = styled.div `
 
 export const RightColumn = styled.div `
     width: 55%;
-    height: 80%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +47,7 @@ export const Subtitle = styled.p `
 
 export const FormBox = styled.div `
     width: 50%;
-    height: 80%;
+    height: 75%;
     background-color: #fff;
     border-radius: 15px;
     box-shadow: 0px 5px 5px 4px rgba(0, 0, 0, 0.4);
@@ -55,26 +55,32 @@ export const FormBox = styled.div `
     flex-direction: column;
     align-items: center;
 `
-export const BoxText = styled.h1 `
+export const Text = styled.h1 `
     font-style: normal;
-    font-weight: bold;
-    font-size: 1rem;
-    margin: 20px;
-    color: #000;
-`
-
-export const CreateAccount = styled.a `
-    font-size: 1rem;
     font-weight: 400;
-    text-decoration: none;
+    font-size: .7rem;
     color: red;
-    margin-top: 20px;
 `
 
+export const Content = styled.div `
+    width: 100%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+export const ButtonsContainer = styled.div `
+    width: 100%;
+    height: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
 
 export const Form = styled.form`
   width: 100%;
-  height: auto;
+  height: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;

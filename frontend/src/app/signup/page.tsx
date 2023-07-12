@@ -12,6 +12,7 @@ import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "../page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
+import ComeBack from "@/components/comeback"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty('Campo obrigatório'),
@@ -47,6 +48,7 @@ export default function SignUp() {
     return (
         <>
             <Container>
+                <ComeBack comeBackTo="/signin"/>
                 <LeftColumn>
                     <Title>Cadastre-se agora!</Title>
                     <Subtitle>

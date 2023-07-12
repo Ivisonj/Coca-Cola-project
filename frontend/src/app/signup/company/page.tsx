@@ -11,6 +11,7 @@ import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "@/src/app/page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
+import ComeBack from "@/components/comeback"
 
 const createCompanyformSchema = z.object({
     name: z.string().nonempty('Campo obrigatório'),
@@ -36,7 +37,7 @@ export default function CompanySignUp() {
             const response = await axios.post(`${baseApiUrl}/signup/company`, data)
             console.log(response)
             if(response.status === 204) {
-                router.push('/signin/company')
+                router.push('/signin')
             }
         } catch(error) {
             console.error(error)
@@ -47,6 +48,7 @@ export default function CompanySignUp() {
     return (
         <>
             <Container>
+                <ComeBack comeBackTo="/signin"/>
                 <LeftColumn>
                     <Title>Cadastre a sua empresa!</Title>
                     <Subtitle>

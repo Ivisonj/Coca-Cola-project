@@ -1,9 +1,7 @@
 'use client'
 import Wave from '@/components/wave'
-import MainButton from '@/components/buttons/mainButton'
-import HomeButton from '@/components/homeButton'
-import { FaUser } from 'react-icons/fa'
-import { BsFillBuildingFill } from 'react-icons/bs'
+import HomeButton from '@/components/buttons/homeButton'
+import { PiBeerBottleBold } from 'react-icons/pi'
 
 export const baseApiUrl = 'http://localhost:8080'
 
@@ -21,17 +19,11 @@ export default function Home() {
           </Subtitle>
         </LeftColumn>
         <RightColumn>
-          <HomeButton link='/signin/company'>
-            <Icon>
-              <BsFillBuildingFill style={{ fontSize: '1.5rem', color: '#fff' }}/>
-            </Icon>
-            <TextButton>sou uma empresa</TextButton>
-          </HomeButton>
           <HomeButton link='/signin'>
             <Icon>
-              <FaUser style={{ fontSize: '1.5rem', color: '#fff' }}/>
+              <PiBeerBottleBold style={{ fontSize: '1.5rem', color: '#fff' }}/>
             </Icon>
-            <TextButton>sou usuário</TextButton>
+            <TextButton>Iniciar agora!</TextButton>
           </HomeButton>
         </RightColumn>
       </Container>
