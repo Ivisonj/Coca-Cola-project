@@ -58,7 +58,7 @@ export const FormBox = styled.div `
 export const Text = styled.h1 `
     font-style: normal;
     font-weight: 400;
-    font-size: .7rem;
+    font-size: 1rem;
     color: red;
 `
 

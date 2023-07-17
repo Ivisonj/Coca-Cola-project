@@ -32,7 +32,6 @@ export default function SignIn() {
     })
 
     const { signIn, companySignIn, errorResponse } = useContext(AuthContext)
-    console.log(errorResponse)
 
     const [ state, setState ] = useState('user')
 

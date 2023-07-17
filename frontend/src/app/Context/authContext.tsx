@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, use } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
 import { baseApiUrl } from '../page'
@@ -9,8 +9,8 @@ import { setCookie, parseCookies } from 'nookies'
 export const AuthContext = createContext({} as AuthContextType)
 
 type User = {
-    id: number
     name: string
+    account: string
 }
 
 type SignInData = {
@@ -34,18 +34,18 @@ export function AuthProvider({ children }) {
     const router = useRouter()
     const [ user, setUser ] = useState<User | null>(null)
     const [ errorResponse, setErrorResponse ] = useState('')
-    console.log('dados da empresa', user)
+    console.log('dados retornados', user)
 
     const isAuthenticated = !!user
 
     useEffect(() => {
         const { 'cocacola-token':token } = parseCookies()
 
-        if(token) {
+        if (token) {
             axios.post(`${baseApiUrl}/recoverInformation`, { token: token })
-                .then(res => setUser(res.data))
-                .catch(err => console.error(err))
-        }
+              .then(res => setUser(res.data))
+              .catch(err => console.error(err))
+          }
     }, [])
 
     async function signIn(data) {
@@ -53,6 +53,10 @@ export function AuthProvider({ children }) {
             const response = await axios.post(`${baseApiUrl}/signin`, data)
 
             setCookie(undefined, 'cocacola-token', response.data.token, {
+                maxAge: response.data.exp
+            })
+
+            setCookie(undefined, 'account', response.data.account, {
                 maxAge: response.data.exp
             })
             
@@ -72,6 +76,11 @@ export function AuthProvider({ children }) {
             const response = await axios.post(`${baseApiUrl}/signin/company`, data)
 
             setCookie(undefined, 'cocacola-token', response.data.token, {
+                maxAge: response.data.exp
+            })
+
+            
+            setCookie(undefined, 'account', response.data.account, {
                 maxAge: response.data.exp
             })
             
