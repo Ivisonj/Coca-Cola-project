@@ -4,7 +4,7 @@ import Header from "@/components/header"
 import MainButton from "@/components/buttons/mainButton"
 import HorizontalCard from "@/components/horizontalCard"
 
-import { Container, ButtonContainer, TitleContainer, Title, CardContainer } from './style'
+import { Container, ButtonContainer, TitleContainer, Title, CardContainer } from '../../../styles/company-dashboardStyle'
 
 const registeredProducts = [
     {

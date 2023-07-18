@@ -9,6 +9,7 @@ export const GlobalStyle = createGlobalStyle `
     }
 
     body {
+        font-family: 'Open Sans', sans-serif;
         background-color: #f5f5f5;
         color: #000;
         display: flex;

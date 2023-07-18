@@ -6,9 +6,10 @@ import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
 import AddProductButton from '@/components/buttons/addProductButton'
 import Amount from '@/components/amount'
+import ComeBack from '@/components/comeback'
 
 
-import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from './style'
+import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../styles/menu-selectionStyle'
 
 
 const contentCards = [

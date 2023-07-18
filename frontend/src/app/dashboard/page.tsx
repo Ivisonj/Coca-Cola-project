@@ -4,7 +4,7 @@ import { parseCookies } from 'nookies'
 
 import Header from "@/components/header"
 import VerticalCard from "@/components/verticalCard"
-import { Container, TitleContainer, Title, CardContainer } from './style'
+import { Container, TitleContainer, Title, CardContainer } from '../../../styles/dashboardStyle'
 import { AuthContext } from "../Context/authContext"
 import { api } from '../services/api'
 import { useRouter } from 'next/navigation'
@@ -35,6 +35,10 @@ export default function Dashboard() {
         userData()
     }, [])
 
+    const handleClick = () => {
+        router.push('/menu-selection')
+    }
+
     return (
         <>
             <Header />
@@ -44,7 +48,7 @@ export default function Dashboard() {
                 </TitleContainer>
                 <CardContainer>
                     {companyInformation.map((item, index) => (
-                        <VerticalCard key={index} name={item.name} address={item.address} imageLink={item.imageLink}/>
+                        <VerticalCard onClick={handleClick} key={index} name={item.name} address={item.address} imageLink={item.imageLink}/>
                     ))}
                 </CardContainer>
             </Container>

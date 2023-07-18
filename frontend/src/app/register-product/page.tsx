@@ -6,7 +6,7 @@ import Input from "@/components/input"
 import UploadInput from "@/components/input/uploadInput"
 import MainButton from "@/components/buttons/mainButton"
 
-import { Container, FormBox, Title } from './style'
+import { Container, FormBox, Title } from '../../../styles/register-productStyle'
 
 export default function RegisterProduct() {
     return (

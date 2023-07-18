@@ -6,11 +6,12 @@ interface VerticalCardProps {
     name: string
     address: string
     imageLink: string
+    onClick: () => void
 }
 
-export default function VerticalCard({ name, address, imageLink }: VerticalCardProps) {
+export default function VerticalCard({ name, address, imageLink, onClick }: VerticalCardProps) {
     return (
-        <Container>
+        <Container onClick={onClick}>
             <ImageContainer>
                 <LogoImage src={imageLink} alt={name}/>
             </ImageContainer>

@@ -11,7 +11,7 @@ import MainButton from "@/components/buttons/mainButton"
 import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "../page"
 
-import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from './style'
+import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from '../../../styles/signUpStyle'
 import ComeBack from "@/components/comeback"
 
 const createUserFormSchema = z.object({
