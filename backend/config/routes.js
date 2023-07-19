@@ -23,4 +23,13 @@ module.exports = app => {
     app.route('/companies/:id')
         .all(app.config.passport.authenticate())        
         .get(app.api.company.getById)
-}
+        
+    app.route('/products')
+        .all(app.config.passport.authenticate())
+        .post(app.api.product.save)        
+        .get(app.api.product.get)
+    
+    app.route('/products/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.product.getByParentId)
+    }

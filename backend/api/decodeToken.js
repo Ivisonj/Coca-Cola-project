@@ -6,7 +6,7 @@ module.exports = app => {
 
         const userData = jwt.decode(req.body.token, authSecret)
 
-        res.json({id: userData.id, name: userData.name})
+        res.json({id: userData.id, name: userData.name, account: userData.account})
     }
     return { recoverUserInformation }
 }

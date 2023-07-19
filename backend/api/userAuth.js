@@ -21,13 +21,14 @@ module.exports = app => {
             id: user.id, 
             name: user.name,
             email: user.email,
+            account: 'user',
             iat: now,
             exp: now + (60 * 60 * 24 * days)
         }
 
         res.json({
-            id: payload.id,
             name: payload.name,
+            account: payload.account,
             token: jwt.encode(payload, authSecret)
         })
     }
