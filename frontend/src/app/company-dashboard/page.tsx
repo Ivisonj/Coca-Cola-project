@@ -1,5 +1,6 @@
 'use client'
 import React from "react"
+import { useRouter } from 'next/navigation'
 import Header from "@/components/header"
 import MainButton from "@/components/buttons/mainButton"
 import HorizontalCard from "@/components/horizontalCard"
@@ -30,6 +31,12 @@ const registeredProducts = [
 ]
 
 export default function CompanyDashboard() {
+    const router = useRouter()
+
+    const handleClick = () => {
+        router.push('register-product')
+    }
+
     return (
         <>
             <Header />
@@ -38,7 +45,7 @@ export default function CompanyDashboard() {
                     <Title>Produtos</Title>
                 </TitleContainer>
                 <ButtonContainer>
-                    <MainButton link="/register-product">novo produto</MainButton>
+                    <MainButton onClick={handleClick}>novo produto</MainButton>
                 </ButtonContainer>
                 <CardContainer>
                     {registeredProducts.map((item, index) =>(

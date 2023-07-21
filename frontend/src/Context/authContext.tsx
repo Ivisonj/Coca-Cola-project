@@ -1,8 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/navigation'
-import { baseApiUrl } from '../page'
-import { api } from '../services/api'
+import { baseApiUrl } from '../app/page'
+import { api } from '../../services/api'
 
 import { setCookie, parseCookies } from 'nookies'
 
@@ -34,7 +34,6 @@ export function AuthProvider({ children }) {
     const router = useRouter()
     const [ user, setUser ] = useState<User | null>(null)
     const [ errorResponse, setErrorResponse ] = useState('')
-    console.log('dados retornados', user)
 
     const isAuthenticated = !!user
 

@@ -2,9 +2,9 @@
 import React, { useContext, useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
+import z from 'zod'
 import { FaUser } from 'react-icons/fa'
 import { BsFillBuildingFill } from 'react-icons/bs'
-import z from 'zod'
 
 import ComeBack from "@/components/comeback"
 import Wave from "@/components/wave"
@@ -12,7 +12,7 @@ import MainButton from "@/components/buttons/mainButton"
 import Input from "@/components/input"
 import Tabs from "@/components/tabs"
 import CreateAccountButton from "@/components/buttons/createAccountButton"
-import { AuthContext } from "../Context/authContext"
+import { AuthContext } from "../../Context/authContext"
 
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, Content, Text, ButtonsContainer, Form, ErrorMsg } from '../../../styles/signInStyle'

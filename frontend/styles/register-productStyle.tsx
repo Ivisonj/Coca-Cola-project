@@ -27,6 +27,20 @@ export const FormBox = styled.div `
 export const Title = styled.h1 `
     font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     color: #000
+`
+export const Form = styled.form`
+  width: 100%;
+  height: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`
+
+export const ErrorMsg = styled.span `
+    font-size: .7rem;
+    font-weight: 100;
+    color: red;
+    margin: 5px 0px;
 `

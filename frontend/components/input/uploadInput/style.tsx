@@ -13,6 +13,7 @@ export const StyleInput = styled.input`
   padding: 10px 0;
   font-size: 16px;
   color: #000;
+  margin-top: 10px;
   margin-bottom: 30px;
   border: none;
   border-bottom: 1px solid red;

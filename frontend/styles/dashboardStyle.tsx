@@ -25,5 +25,6 @@ export const CardContainer = styled.div `
     width: 100%;
     heigt: 85%;
     display: flex;
+    flex-wrap: wrap;
     padding: 0px 70px;
 `
