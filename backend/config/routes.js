@@ -1,3 +1,6 @@
+const multer = require('multer')
+const multerConfig = require('./multer')
+
 module.exports = app => {
     app.post('/signup', app.api.user.save)
     app.post('/signin', app.api.userAuth.signin)
@@ -25,11 +28,17 @@ module.exports = app => {
         .get(app.api.company.getById)
         
     app.route('/products')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .post(app.api.product.save)        
         .get(app.api.product.get)
     
+    app.route('/upload')
+        .post(multer(multerConfig).single('file'), (req, res) => {
+            return res.status(204).send()
+        })
+
     app.route('/products/:id')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
         .get(app.api.product.getByParentId)
+    
     }
