@@ -1,33 +1,29 @@
 'use client'
 import React from "react"
-import { useRouter } from "next/navigation"
 
 import { Container, ImageContainer, InforContainer, ProductName, Price, LogoImage } from './style'
+import Link from "next/link"
 
 interface VerticalCardProps {
     name: string
     price: number
     image: string
-    goTo: string
+    id: string
 }
 
-export default function HorizontalCard({ name, price, image, goTo }: VerticalCardProps) {
-    const router = useRouter()
-
-    const handleClick = () => {
-        router.push(goTo)
-    }
-    
+export default function HorizontalCard(props: VerticalCardProps) {    
     return (
-        <Container onClick={handleClick}>
-            <ImageContainer>
-                <LogoImage src={image} alt={name}/>
-            </ImageContainer>
-            <InforContainer>
-                <ProductName>{name}</ProductName>
-                <Price>{`R$ ${price.toFixed(2).replace('.', ',')}`}</Price>
-            </InforContainer>
-        </Container>
+        <Link  href={`/company/${props.id}`} style={{ textDecoration: 'none' }}>
+            <Container>
+                <ImageContainer>
+                    <LogoImage src={props.image} alt={props.name}/>
+                </ImageContainer>
+                <InforContainer>
+                    <ProductName>{props.name}</ProductName>
+                    <Price>{`R$ ${props.price.toFixed(2).replace('.', ',')}`}</Price>
+                </InforContainer>
+            </Container>
+        </Link>
     )
 }
 

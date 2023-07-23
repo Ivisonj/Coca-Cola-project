@@ -7,7 +7,7 @@ import { api } from "@/services/api"
 
 const defaultImage = '/images/coca-1.png'
 
-export default async function CompanyDashboard() {
+export default async function Company() {
     
     const response = await api.get('/products')
     const responseData = response.data
@@ -26,8 +26,8 @@ export default async function CompanyDashboard() {
                 <CardContainer>
                     {responseData?.map((item) =>(
                         <HorizontalCard 
-                            goTo="/company" 
                             key={item.id} 
+                            id={item.id}
                             name={item.name}
                             price={item.price} 
                             image={item.imageUrl === null ? defaultImage : item.imageUrl}
