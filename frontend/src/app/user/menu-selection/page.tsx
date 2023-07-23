@@ -9,7 +9,7 @@ import Amount from '@/components/amount'
 import ComeBack from '@/components/comeback'
 
 
-import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../styles/menu-selectionStyle'
+import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../../styles/menu-selectionStyle'
 
 
 const contentCards = [

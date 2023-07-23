@@ -64,7 +64,7 @@ export function AuthProvider({ children }) {
 
             api.defaults.headers['Authorization'] = `bearer ${response.data.token}`
 
-            router.push('/dashboard')
+            router.push('/user')
         } catch(error) {
             console.error(error)
             setErrorResponse(error.response.data)
@@ -88,7 +88,7 @@ export function AuthProvider({ children }) {
 
             api.defaults.headers['Authorization'] = `bearer ${response.data.token}`
 
-            router.push('/company-dashboard')
+            router.push('/company')
         } catch(error) {
             console.error(error)
             setErrorResponse(error.response.data)

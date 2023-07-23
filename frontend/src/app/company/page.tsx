@@ -2,7 +2,7 @@ import Header from "@/components/header"
 import MainButton from "@/components/buttons/mainButton"
 import HorizontalCard from "@/components/horizontalCard"
 
-import { Container, ButtonContainer, TitleContainer, Title, CardContainer } from '../../../styles/company-dashboardStyle'
+import { Container, ButtonContainer, TitleContainer, Title, CardContainer } from '../../../styles/company.module'
 import { api } from "@/services/api"
 import { baseApiUrl } from "../page"
 
@@ -24,7 +24,7 @@ export default function CompanyDashboard() {
                     <Title>Produtos</Title>
                 </TitleContainer>
                 <ButtonContainer>
-                    <MainButton goTo="/register-product">novo produto</MainButton>
+                    <MainButton goTo="/company/register">novo produto</MainButton>
                 </ButtonContainer>
                 <CardContainer>
                     {registeredProducts.map((item, index) =>(

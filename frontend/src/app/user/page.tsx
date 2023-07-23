@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react"
 
 import Header from "@/components/header"
 import VerticalCard from "@/components/verticalCard"
-import { Container, TitleContainer, Title, CardContainer } from '../../../styles/dashboardStyle'
+import { Container, TitleContainer, Title, CardContainer } from '../../../styles/user.module'
 import { AuthContext } from "../../Context/authContext"
 import { api } from '../../../services/api'
 import { baseApiUrl } from "../page"

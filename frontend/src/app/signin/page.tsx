@@ -15,7 +15,7 @@ import CreateAccountButton from "@/components/buttons/createAccountButton"
 import { AuthContext } from "../../Context/authContext"
 
 
-import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, Content, Text, ButtonsContainer, Form, ErrorMsg } from '../../../styles/signInStyle'
+import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, Content, Text, ButtonsContainer, Form, ErrorMsg } from '../../../styles/signIn.module'
 
 const userFormSchema = z.object({
     email: z.string().nonempty('Campo obrigatório').email('Formato de E-mail inválido'),

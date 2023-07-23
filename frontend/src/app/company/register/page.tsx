@@ -12,7 +12,7 @@ import Input from "@/components/input"
 import MainButton from "@/components/buttons/mainButton"
 import { api } from "@/services/api"
 
-import { Container, FormBox, Title, Form, ErrorMsg } from '../../../styles/register-productStyle'
+import { Container, FormBox, Title, Form, ErrorMsg } from '../../../../styles/register.module'
 
 const productFormSchema = z.object({
     name: z.string().nonempty('Campo obrigatório'),

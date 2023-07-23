@@ -6,8 +6,8 @@ export default function middleware(request: NextRequest) {
     const account = request.cookies.get('account')?.value
 
     const signinURL = new URL('/signin', request.url)
-    const dashboard = new URL('/dashboard', request.url)
-    const companyDashboard = new URL('/company-dashboard', request.url)
+    const dashboard = new URL('/user', request.url)
+    const companyDashboard = new URL('/company', request.url)
 
     if(!token) {
         if(request.nextUrl.pathname === '/signin') {
@@ -17,11 +17,11 @@ export default function middleware(request: NextRequest) {
     }
 
     if(token) {
-        if(account === 'user' && request.nextUrl.pathname.startsWith('/company-dashboard')) {
+        if(account === 'user' && request.nextUrl.pathname.startsWith('/company')) {
             return NextResponse.redirect(dashboard)
-        } else if(account === 'user' && request.nextUrl.pathname.startsWith('/register-product')) {
+        } else if(account === 'user' && request.nextUrl.pathname.startsWith('/register')) {
             return NextResponse.redirect(dashboard)
-        } else if(account === 'company' && request.nextUrl.pathname.startsWith('/dashboard')) {
+        } else if(account === 'company' && request.nextUrl.pathname.startsWith('/user')) {
             return NextResponse.redirect(companyDashboard)
         } else if(account === 'company' && request.nextUrl.pathname.startsWith('/menu-selection')) {
             return NextResponse.redirect(companyDashboard)
@@ -32,9 +32,9 @@ export default function middleware(request: NextRequest) {
 export const config = {
     matcher: [
         '/signin', 
-        '/dashboard/:path*', 
-        '/company-dashboard/:path*', 
-        '/register-product/:path*',
-        '/menu-selection/:path*',
+        '/user/:path*', 
+        '/company/:path*', 
+        // '/register-product/:path*',
+        // '/menu-selection/:path*',
     ]
 }
