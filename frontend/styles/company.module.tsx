@@ -28,6 +28,7 @@ export const CardContainer = styled.div `
     heigt: 85%;
     display: flex;
     padding: 20px 70px;
+    flex-wrap: wrap;
 `
 
 export const ButtonContainer = styled.div `

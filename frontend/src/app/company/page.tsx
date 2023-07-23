@@ -4,18 +4,15 @@ import HorizontalCard from "@/components/horizontalCard"
 
 import { Container, ButtonContainer, TitleContainer, Title, CardContainer } from '../../../styles/company.module'
 import { api } from "@/services/api"
-import { baseApiUrl } from "../page"
 
-const registeredProducts = [
-    {
-        name: 'Coca-Cola',
-        price: 10,
-        image: '/images/coca-1.png'
-    }
-]
+const defaultImage = '/images/coca-1.png'
 
-export default function CompanyDashboard() {
+export default async function CompanyDashboard() {
     
+    const response = await api.get('/products')
+    const responseData = response.data
+    console.log(responseData)
+
     return (
         <>
             <Header />
@@ -27,8 +24,14 @@ export default function CompanyDashboard() {
                     <MainButton goTo="/company/register">novo produto</MainButton>
                 </ButtonContainer>
                 <CardContainer>
-                    {registeredProducts.map((item, index) =>(
-                        <HorizontalCard goTo="/company-dashboard" key={index} name={item.name} price={item.price} image={item.image}/>
+                    {responseData?.map((item) =>(
+                        <HorizontalCard 
+                            goTo="/company" 
+                            key={item.id} 
+                            name={item.name}
+                            price={item.price} 
+                            image={item.imageUrl === null ? defaultImage : item.imageUrl}
+                        />
                     ))}
                 </CardContainer>
             </Container>
