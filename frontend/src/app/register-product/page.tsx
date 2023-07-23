@@ -54,7 +54,7 @@ export default function RegisterProduct() {
                             {errors.name && <ErrorMsg>{errors.name.message}</ErrorMsg>}
                             <Input type="text" label="Preço do Produto" register={register('price')} step={'0.01'}/>
                             {errors.price && <ErrorMsg>{errors.price.message}</ErrorMsg>}
-                            <MainButton type="submit" margin="30px 0px 0px 0px">
+                            <MainButton goTo="/company-dashboard" type="submit" margin="30px 0px 0px 0px">
                                 finalizar
                             </MainButton>
                     </Form>

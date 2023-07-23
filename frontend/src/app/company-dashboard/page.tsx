@@ -1,42 +1,21 @@
-'use client'
-import React from "react"
-import { useRouter } from 'next/navigation'
 import Header from "@/components/header"
 import MainButton from "@/components/buttons/mainButton"
 import HorizontalCard from "@/components/horizontalCard"
 
 import { Container, ButtonContainer, TitleContainer, Title, CardContainer } from '../../../styles/company-dashboardStyle'
+import { api } from "@/services/api"
+import { baseApiUrl } from "../page"
 
 const registeredProducts = [
     {
         name: 'Coca-Cola',
         price: 10,
         image: '/images/coca-1.png'
-    },
-    {
-        name: 'Coca-Cola',
-        price: 10,
-        image: '/images/coca-1.png'
-    },
-    {
-        name: 'Coca-Cola',
-        price: 10,
-        image: '/images/coca-1.png'
-    },
-    {
-        name: 'Coca-Cola',
-        price: 10,
-        image: '/images/coca-1.png'
-    },
+    }
 ]
 
 export default function CompanyDashboard() {
-    const router = useRouter()
-
-    const handleClick = () => {
-        router.push('register-product')
-    }
-
+    
     return (
         <>
             <Header />
@@ -45,11 +24,11 @@ export default function CompanyDashboard() {
                     <Title>Produtos</Title>
                 </TitleContainer>
                 <ButtonContainer>
-                    <MainButton onClick={handleClick}>novo produto</MainButton>
+                    <MainButton goTo="/register-product">novo produto</MainButton>
                 </ButtonContainer>
                 <CardContainer>
                     {registeredProducts.map((item, index) =>(
-                        <HorizontalCard key={index} name={item.name} price={item.price} image={item.image}/>
+                        <HorizontalCard goTo="/company-dashboard" key={index} name={item.name} price={item.price} image={item.image}/>
                     ))}
                 </CardContainer>
             </Container>

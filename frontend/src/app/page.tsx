@@ -1,13 +1,12 @@
-'use client'
 import Wave from '@/components/wave'
 import HomeButton from '@/components/buttons/homeButton'
-import { PiBeerBottleBold } from 'react-icons/pi'
 
 export const baseApiUrl = 'http://localhost:8080'
 
-import { Container, LeftColumn, RightColumn, Title, Subtitle, Icon, TextButton } from './page.module.tsx'
+import { Container, LeftColumn, RightColumn, Title, Subtitle } from './page.module.tsx'
 
-export default function Home() {
+export default async function Home() {
+
   return (
     <>
       <Container>
@@ -19,12 +18,7 @@ export default function Home() {
           </Subtitle>
         </LeftColumn>
         <RightColumn>
-          <HomeButton link='/signin'>
-            <Icon>
-              <PiBeerBottleBold style={{ fontSize: '1.5rem', color: '#fff' }}/>
-            </Icon>
-            <TextButton>Iniciar agora!</TextButton>
-          </HomeButton>
+          <HomeButton link='/signin' />
         </RightColumn>
       </Container>
       <Wave type='infinite' />

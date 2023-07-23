@@ -15,3 +15,20 @@ export const ButtonContainer = styled.div `
         transform: scale(1.1);   
     }
 `
+
+export const Icon = styled.div `
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+export const TextButton = styled.h1 `
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: flex;
+    align-items: center;   
+`

@@ -1,13 +1,14 @@
+'use client'
 import React from 'react'
+import { PiBeerBottleBold } from 'react-icons/pi'
 import { useRouter } from 'next/navigation'
-import { ButtonContainer } from './style'
+import { ButtonContainer, Icon, TextButton } from './style'
 
 interface HomeButtonProps {
-    children: string
-    link?: string 
+    link: string 
 }
 
-export default function HomeButton({ children, link }: HomeButtonProps) {
+export default function HomeButton({ link }: HomeButtonProps) {
     const router = useRouter()
 
     const handleClick = () => {
@@ -16,7 +17,10 @@ export default function HomeButton({ children, link }: HomeButtonProps) {
 
     return (
         <ButtonContainer onClick={handleClick}>
-            {children}
+            <Icon>
+              <PiBeerBottleBold style={{ fontSize: '1.5rem', color: '#fff' }}/>
+            </Icon>
+            <TextButton>Iniciar agora!</TextButton>
         </ButtonContainer>
     )
 }

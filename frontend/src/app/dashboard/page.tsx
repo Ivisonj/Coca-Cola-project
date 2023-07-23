@@ -1,19 +1,23 @@
 'use client'
 import React, { useContext, useEffect, useState } from "react"
-import { parseCookies } from 'nookies'
 
 import Header from "@/components/header"
 import VerticalCard from "@/components/verticalCard"
 import { Container, TitleContainer, Title, CardContainer } from '../../../styles/dashboardStyle'
 import { AuthContext } from "../../Context/authContext"
 import { api } from '../../../services/api'
-import { useRouter } from 'next/navigation'
+import { baseApiUrl } from "../page"
+import axios from "axios"
 
 export default function Dashboard() {
+
+    // const response = await fetch('http://localhost:8080/companies')
+    // const responseData = await response.json()
+    // console.log(JSON.stringify(responseData))
+    
     const { user } = useContext(AuthContext)
     const [responseData, setResponseData] = useState()
     console.log(responseData)
-    const router = useRouter()
 
     useEffect(() => {
         async function userData() {
@@ -25,11 +29,7 @@ export default function Dashboard() {
             }
         }
         userData()
-    }, [])
-
-    const handleClick = () => {
-        router.push('/menu-selection')
-    }
+    }, []) 
 
     return (
         <>
@@ -41,7 +41,7 @@ export default function Dashboard() {
                 <CardContainer>
                     {responseData?.map((item) => (
                         <VerticalCard 
-                        onClick={handleClick} 
+                        goTo="/menu-selection" 
                         key={item.id} 
                         name={item.name} 
                         address={item.address} 
@@ -52,4 +52,3 @@ export default function Dashboard() {
         </>
     )
 }
-

@@ -1,3 +1,4 @@
+'use client'
 import React from 'react';
 import { WaveContainer, Section } from "./style"
 import { useRightButton, useLeftButton } from '../../stores/useStore'
@@ -7,8 +8,8 @@ interface WaveProps {
 }
 
 export default function Wave({ type }: WaveProps) {
-    const { rightButtonState} = useRightButton()
-    const { leftButtonState } = useLeftButton()
+    const { rightButtonState } = useRightButton()
+    const { leftButtonState  } = useLeftButton()
 
     return (
         <>

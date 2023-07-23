@@ -1,6 +1,6 @@
-'use client'
 import { GlobalStyle }  from './globals'
 import { AuthProvider } from '../Context/authContext'
+import StyledComponentsRegistry from '../registry'
 
 export default function RootLayout({
   children,
@@ -11,9 +11,11 @@ export default function RootLayout({
     <>
     <html lang="en">
       <body>
-        <AuthProvider>
-          {children}
-        </AuthProvider>
+        <StyledComponentsRegistry>
+          <AuthProvider>
+            {children}
+          </AuthProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
     <GlobalStyle />
