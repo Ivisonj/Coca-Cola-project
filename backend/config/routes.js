@@ -31,14 +31,18 @@ module.exports = app => {
         // .all(app.config.passport.authenticate())
         .post(app.api.product.save)        
         .get(app.api.product.get)
-    
-    app.route('/upload')
-        .post(multer(multerConfig).single('file'), (req, res) => {
-            return res.status(204).send()
-        })
 
     app.route('/products/:id')
         // .all(app.config.passport.authenticate())
+        .get(app.api.product.getById)
+
+    app.route('/products/parentId/:id')
+        // .all(app.config.passport.authenticate())
         .get(app.api.product.getByParentId)
     
+    app.route('/upload')
+        .post(multer(multerConfig).single('file'), (req, res) => {
+            console.log(req.file)
+            return res.status(204).send()
+        })
     }

@@ -26,6 +26,16 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
+    const getById = (req, res) => {
+        const productId = req.params.id
+
+        app.db('products')
+            .select('id', 'name', 'price', 'imageUrl', 'companyId')
+            .where({ id: productId })
+            .then(products => res.json(products))
+            .catch(err => res.select(500).send(err))
+    }
+
     const getByParentId = (req, res) => {
         const companyId = req.params.id
     
@@ -36,5 +46,5 @@ module.exports = app => {
             .catch(err => res.status(500).send(err));
     }
     
-    return { save, get, getByParentId }
+    return { save, get, getById, getByParentId }
 }
