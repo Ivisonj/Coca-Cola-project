@@ -6,7 +6,7 @@ export const StyleButton = styled.button `
         padding: 10px;
         margin: ${props => props.margin};
         color: #fff;
-        background-color: ${props => props.bgColor};
+        background-color: DarkGray;
         border-radius: 7px;
         border: none;
         cursor: pointer;
@@ -14,7 +14,7 @@ export const StyleButton = styled.button `
         transition: 0.5s all ease-in-out;
 
         &:active {
-                background-color: #A52A2A;
+                background-color: gray;
         }        
 
         &:hover {
