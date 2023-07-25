@@ -6,7 +6,7 @@ import z from 'zod'
 import axios from "axios"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
-import MainButton from "@/components/buttons/mainButton"
+import MainButton from "@/components/buttons/PrimaryButton"
 import { useRouter } from 'next/navigation'
 import { baseApiUrl } from "@/src/app/page"
 

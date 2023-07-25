@@ -12,7 +12,7 @@ interface ButtonProps {
     bgColor?: 'red' | 'MediumSeaGreen' | 'Silver'
 }
 
-export default function MainButton({ children, width, margin, type= 'button', goTo, bgColor= 'red' }: ButtonProps) {
+export default function PrimaryButton({ children, width, margin, type= 'button', goTo, bgColor= 'red' }: ButtonProps) {
     const router = useRouter()
 
     const handleClick = () => {

@@ -8,7 +8,7 @@ import { BsFillBuildingFill } from 'react-icons/bs'
 
 import ComeBack from "@/components/comeback"
 import Wave from "@/components/wave"
-import MainButton from "@/components/buttons/mainButton"
+import MainButton from "@/components/buttons/PrimaryButton"
 import Input from "@/components/input"
 import Tabs from "@/components/tabs"
 import CreateAccountButton from "@/components/buttons/createAccountButton"

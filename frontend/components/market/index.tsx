@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { Container, Icon, ProductDetail, PurchaseConfirmation, Product, ProductName, Text } from "./style"
 import Amount from '../amount'
-import MainButton from '../buttons/mainButton'
+import MainButton from '../buttons/PrimaryButton'
 import { BsFillCartFill } from 'react-icons/bs'
 import { IoMdArrowBack } from 'react-icons/io'
 import { useStore } from '@/stores/useStore'

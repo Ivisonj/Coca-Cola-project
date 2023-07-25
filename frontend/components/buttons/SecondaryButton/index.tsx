@@ -8,13 +8,14 @@ interface ButtonProps {
     width?: string 
     margin?: string
     onClick?: () => void
+    bgColor?: 'red' | 'MediumSeaGreen' | 'DarkGray' 
 }
 
-export default function EditeButton({ children, width, margin, onClick }: ButtonProps) {
+export default function SecondaryButton({ children, width, margin, onClick, bgColor }: ButtonProps) {
 
     return (
         <>
-            <StyleButton width={width} margin={margin} type='button' onClick={onClick}>
+            <StyleButton width={width} margin={margin} type='button' onClick={onClick} bgColor={bgColor}>
                 {children}
             </StyleButton>
         </>

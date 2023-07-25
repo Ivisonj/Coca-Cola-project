@@ -9,7 +9,7 @@ import { AuthContext } from "@/src/Context/authContext"
 import Header from "@/components/header"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
-import MainButton from "@/components/buttons/mainButton"
+import MainButton from "@/components/buttons/PrimaryButton"
 import { api } from "@/services/api"
 
 import { Container, FormBox, Title, Form, ErrorMsg } from '../../../../styles/register.module'

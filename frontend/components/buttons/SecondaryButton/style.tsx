@@ -6,7 +6,7 @@ export const StyleButton = styled.button `
         padding: 10px;
         margin: ${props => props.margin};
         color: #fff;
-        background-color: DarkGray;
+        background-color: ${props => props.bgColor};
         border-radius: 7px;
         border: none;
         cursor: pointer;

@@ -1,19 +1,25 @@
 'use client'
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useRouter } from 'next/navigation'
+
+import { Container, LeftColumn, RightColumn, ImageContainer, Text, Form, ButtonsContainer } from '../../../../styles/product.module'
+
 import Header from '@/components/header'
 import InforInput from '@/components/input/inforInput'
 import { api } from '@/services/api'
-import { Container, LeftColumn, RightColumn, ImageContainer, Text, Form, ButtonsContainer } from '../../../../styles/product.module'
-import MainButton from '@/components/buttons/mainButton'
-import EditeButton from '@/components/buttons/editeButton'
+import PrimaryButton from '@/components/buttons/PrimaryButton'
+import SecondaryButton from '@/components/buttons/SecondaryButton'
 
 const defaultImage = '/images/coca-1.png'
+// const defaultImage = 'http://localhost:8080/image/f86462e804d9990ff3be8b223a8d3648-601846'
+
 
 export default function Product({ params }: { params: { productId: string } }) {
 
     const [responseData, setResponseData] = useState()
     const [isEditing, setIsEditing] = useState(true)
+    const router = useRouter()
 
     const { register, handleSubmit } = useForm()
 
@@ -25,7 +31,7 @@ export default function Product({ params }: { params: { productId: string } }) {
         async function userData() {
             try {
                 const response = await api.get(`/products/${params.productId}`)
-                setResponseData(response.data[0])
+                setResponseData(response.data)
             } catch(error) {
                 console.error(error)
             }
@@ -35,6 +41,15 @@ export default function Product({ params }: { params: { productId: string } }) {
 
     const editeProduct = (data) => {
         console.log(data)
+    }
+
+    const deleteProduct = async () => {
+        try {
+            const response = await api.delete(`/products/${params.productId}`)
+            router.push('/company')
+        } catch(msg) {
+            console.error(msg)
+        }
     }
 
     return (
@@ -50,10 +65,10 @@ export default function Product({ params }: { params: { productId: string } }) {
                     <InforInput value={responseData?.price} type='text' label='Preço'  disabled={isEditing} register={register('price')}/>
                     <InforInput type='file' label='Imagem' disabled={isEditing} register={register('imageUrl')}/>
                     <ButtonsContainer>
-                        <MainButton type='submit' bgColor='MediumSeaGreen' margin='0px 5px'>Salvar</MainButton>
-                        <EditeButton margin='0px 30px 0px 5px' onClick={toggleEdite}>Editar</EditeButton>
+                        <PrimaryButton type='submit' bgColor='MediumSeaGreen' margin='0px 5px'>Salvar</PrimaryButton>
+                        <SecondaryButton margin='0px 5px' onClick={toggleEdite} bgColor='DarkGray'>Editar</SecondaryButton>
+                        <SecondaryButton margin='0px 30px 0px 5px' onClick={deleteProduct} bgColor='red'>Excluir</SecondaryButton>
                     </ButtonsContainer>
-                        {/* <MainButton type='submit' margin='0px 30px 0px 5px'>Exluir</MainButton> */}
                 </Form>
             </RightColumn>
         </Container>
