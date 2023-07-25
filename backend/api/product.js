@@ -43,7 +43,7 @@ module.exports = app => {
             .select('id', 'name', 'price', 'imageUrl', 'companyId')
             .where({ companyId: companyId }) 
             .then(products => res.json(products)) 
-            .catch(err => res.status(500).send(err));
+            .catch(err => res.status(500).send(err))
     }
     
     return { save, get, getById, getByParentId }

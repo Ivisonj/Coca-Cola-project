@@ -1,5 +1,6 @@
 const multer = require('multer')
 const multerConfig = require('./multer')
+const path = require('path')
 
 module.exports = app => {
     app.post('/signup', app.api.user.save)
@@ -33,7 +34,7 @@ module.exports = app => {
         .get(app.api.product.get)
 
     app.route('/products/:id')
-        // .all(app.config.passport.authenticate())
+        .all(app.config.passport.authenticate())
         .get(app.api.product.getById)
 
     app.route('/products/parentId/:id')
@@ -45,4 +46,12 @@ module.exports = app => {
             console.log(req.file)
             return res.status(204).send()
         })
-    }
+
+    app.route('/image/:imageName') 
+        .get((req, res) => {
+            const imageName = req.params.imageName
+            const imagePath = path.join(__dirname, '..', 'public', `${imageName}.jpg`)
+        
+            res.sendFile(imagePath)
+        })
+}
