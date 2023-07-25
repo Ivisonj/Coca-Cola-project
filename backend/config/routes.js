@@ -34,8 +34,10 @@ module.exports = app => {
         .get(app.api.product.get)
 
     app.route('/products/:id')
-        .all(app.config.passport.authenticate())
+        // .all(app.config.passport.authenticate())
+        .put(app.api.product.save)
         .get(app.api.product.getById)
+        .delete(app.api.product.remove)
 
     app.route('/products/parentId/:id')
         // .all(app.config.passport.authenticate())

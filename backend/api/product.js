@@ -32,6 +32,7 @@ module.exports = app => {
         app.db('products')
             .select('id', 'name', 'price', 'imageUrl', 'companyId')
             .where({ id: productId })
+            .first()
             .then(products => res.json(products))
             .catch(err => res.select(500).send(err))
     }
@@ -42,9 +43,17 @@ module.exports = app => {
         app.db('products')
             .select('id', 'name', 'price', 'imageUrl', 'companyId')
             .where({ companyId: companyId }) 
+            .first()
             .then(products => res.json(products)) 
             .catch(err => res.status(500).send(err))
     }
+
+    const remove = async (req, res) => {
+        app.db('products')
+            .where({ id: req.params.id }).del()
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(500).send(err))
+    }
     
-    return { save, get, getById, getByParentId }
+    return { save, get, getById, getByParentId, remove }
 }
