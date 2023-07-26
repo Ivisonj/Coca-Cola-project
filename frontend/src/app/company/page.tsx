@@ -13,6 +13,8 @@ export default async function Company() {
     const responseData = response.data
     console.log(responseData)
 
+    const productImage = `http://localhost:8080/image/${responseData?.imageUrl}`
+
     return (
         <>
             <Header />
@@ -30,7 +32,7 @@ export default async function Company() {
                             id={item.id}
                             name={item.name}
                             price={item.price} 
-                            image={item.imageUrl === null ? defaultImage : item.imageUrl}
+                            image={item.imageUrl === null ? defaultImage : productImage}
                         />
                     ))}
                 </CardContainer>

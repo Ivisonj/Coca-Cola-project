@@ -12,8 +12,6 @@ import PrimaryButton from '@/components/buttons/PrimaryButton'
 import SecondaryButton from '@/components/buttons/SecondaryButton'
 
 const defaultImage = '/images/coca-1.png'
-// const defaultImage = 'http://localhost:8080/image/f86462e804d9990ff3be8b223a8d3648-601846'
-
 
 export default function Product({ params }: { params: { productId: string } }) {
 
@@ -23,12 +21,14 @@ export default function Product({ params }: { params: { productId: string } }) {
 
     const { register, handleSubmit } = useForm()
 
+    const productImage = `http://localhost:8080/image/${responseData?.imageUrl}`
+
     const toggleEdite = () => {
         setIsEditing(!isEditing)
     }
 
     useEffect(() => {
-        async function userData() {
+        async function productData() {
             try {
                 const response = await api.get(`/products/${params.productId}`)
                 setResponseData(response.data)
@@ -36,12 +36,8 @@ export default function Product({ params }: { params: { productId: string } }) {
                 console.error(error)
             }
         }
-        userData()
+        productData()
     }, []) 
-
-    const editeProduct = (data) => {
-        console.log(data)
-    }
 
     const deleteProduct = async () => {
         try {
@@ -52,18 +48,34 @@ export default function Product({ params }: { params: { productId: string } }) {
         }
     }
 
+    const editeProduct = async (data) => {
+        const formData = new FormData()
+
+        formData.append('file', data.file[0])
+
+        const fileResponse = await api.post('/upload', formData)
+        const fileName = fileResponse.data.replace('.jpg', '')
+        console.log(fileName)
+
+        const putform = await api.put(`/products/${params.productId}`, {
+            name: data.name,
+            price: data.price, 
+            imageUrl: fileName,
+        })
+    }
+
     return (
         <Container>
             <Header />
             <LeftColumn>
-                <ImageContainer src={responseData?.imageUrl === null ? defaultImage : responseData?.imageUrl} alt='teste'/>
+                <ImageContainer src={responseData?.imageUrl === null ? defaultImage : productImage} alt={responseData?.name}/>
             </LeftColumn>
             <RightColumn>
                 <Text>Dados do produto:</Text>
                 <Form onSubmit={handleSubmit(editeProduct)}>
                     <InforInput value={responseData?.name} type='text' label='Nome do produto' disabled={isEditing} register={register('name')}/>
                     <InforInput value={responseData?.price} type='text' label='Preço'  disabled={isEditing} register={register('price')}/>
-                    <InforInput type='file' label='Imagem' disabled={isEditing} register={register('imageUrl')}/>
+                    <InforInput type='file' label='Imagem' disabled={isEditing} register={register('file')}/>
                     <ButtonsContainer>
                         <PrimaryButton type='submit' bgColor='MediumSeaGreen' margin='0px 5px'>Salvar</PrimaryButton>
                         <SecondaryButton margin='0px 5px' onClick={toggleEdite} bgColor='DarkGray'>Editar</SecondaryButton>
