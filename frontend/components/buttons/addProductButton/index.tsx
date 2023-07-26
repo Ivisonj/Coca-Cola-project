@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, createContext } from "react";
 import { IoCheckmarkDoneCircleSharp } from 'react-icons/io5';
 import { BsFillCartFill } from 'react-icons/bs';

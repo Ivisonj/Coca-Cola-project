@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { FaUser } from 'react-icons/fa'
 import { BsFillBuildingFill } from 'react-icons/bs'

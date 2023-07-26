@@ -1,3 +1,4 @@
+'use client'
 import React, { useContext, useState } from 'react'
 import { Container, Icon, ProductDetail, PurchaseConfirmation, Product, ProductName, Text } from "./style"
 import Amount from '../amount'

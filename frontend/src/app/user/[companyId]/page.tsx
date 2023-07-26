@@ -6,11 +6,8 @@ import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
 import AddProductButton from '@/components/buttons/addProductButton'
 import Amount from '@/components/amount'
-import ComeBack from '@/components/comeback'
 
-
-import { Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../../styles/menu-selectionStyle copy'
-
+import {  Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../../styles/companyProducts.module'
 
 const contentCards = [
     {
@@ -35,8 +32,9 @@ const contentCards = [
     },
    
 ]
- 
-export default function Home() {
+
+
+export default function CompanyProducts({params}: { params: { companyId: string } }) {
     const totalCards = contentCards.length
 
     return (
@@ -73,4 +71,4 @@ export default function Home() {
         <Wave />
         </>
     )
-} 
+}

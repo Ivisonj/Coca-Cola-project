@@ -1,3 +1,4 @@
+'use client'
 import React, { createContext, useState, Children, ReactNode } from "react";
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai';
 import { useRightButton, useLeftButton } from '../../../stores/useStore'
