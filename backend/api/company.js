@@ -11,6 +11,8 @@ module.exports = app => {
     const save = async (req, res) => {
         const company = { ...req.body }
 
+        if(req.params.id) company.id = req.params.id
+
         try {
             const existEmailInDb = await app.db('company')
                 .where({ email: company.email}).first()
@@ -25,7 +27,13 @@ module.exports = app => {
 
         company.password = encryptPassword(company.password)
 
-        if(!company.id) {
+        if(company.id) {
+            app.db('company')
+                .update(company)
+                .where({ id: req.params.id })
+                .then(_ => res.status(204).send())
+                .catch(err => res.status(500).send(err))
+        } else {
             app.db('company')
                 .insert(company)
                 .then(_ => res.status(204).send())
@@ -44,10 +52,17 @@ module.exports = app => {
         app.db('company')
             .select('id', 'name', 'email', 'address')
             .where({ id: req.params.id })
-            .first()
+            .whereNullable('deletedAt')
             .then(company => res.json(company))
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get, getById }
+    const remove = (req, res) => {
+        app.db('company')
+            .where({ id: req.params.id }).del()
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(500).send(err))
+    }
+
+    return { save, get, getById, remove }
 }
