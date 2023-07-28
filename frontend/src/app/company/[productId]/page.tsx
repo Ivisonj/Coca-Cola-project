@@ -10,19 +10,27 @@ import InforInput from '@/components/input/inforInput'
 import { api } from '@/services/api'
 import PrimaryButton from '@/components/buttons/PrimaryButton'
 import SecondaryButton from '@/components/buttons/SecondaryButton'
+import Alert from '@/components/alert'
 
 const defaultImage = '/images/coca-cola-desenho.png'
 
 export default function Product({ params }: { params: { productId: string } }) {
 
     const [responseData, setResponseData] = useState()
+    const [isAlertVisible, setIsAlertVisible] = useState(false)
     const [isEditing, setIsEditing] = useState(true)
     const router = useRouter()
+
+    console.log(isAlertVisible)
 
     const { register, handleSubmit } = useForm()
 
     const toggleEdite = () => {
         setIsEditing(!isEditing)
+    }
+
+    const callAlert = () => {
+        setIsAlertVisible(!isAlertVisible)
     }
 
     useEffect(() => {
@@ -66,6 +74,11 @@ export default function Product({ params }: { params: { productId: string } }) {
 
     return (
         <Container>
+            <Alert
+                confirmButton={deleteProduct}
+                cancelButton={callAlert} 
+                display={isAlertVisible ? 'flex' : 'none'} 
+            />
             <Header />
             <LeftColumn>
                 <ImageContainer src={responseData?.imageUrl === null ? defaultImage : `http://localhost:8080/image/${responseData?.imageUrl}`} alt={responseData?.name}/>
@@ -79,7 +92,7 @@ export default function Product({ params }: { params: { productId: string } }) {
                     <ButtonsContainer>
                         <PrimaryButton type='submit' bgColor='MediumSeaGreen' margin='0px 5px'>Salvar</PrimaryButton>
                         <SecondaryButton margin='0px 5px' onClick={toggleEdite} bgColor='DarkGray'>Editar</SecondaryButton>
-                        <SecondaryButton margin='0px 30px 0px 5px' onClick={deleteProduct} bgColor='red'>Excluir</SecondaryButton>
+                        <SecondaryButton margin='0px 30px 0px 5px' onClick={callAlert} bgColor='red'>Excluir</SecondaryButton>
                     </ButtonsContainer>
                 </Form>
             </RightColumn>
