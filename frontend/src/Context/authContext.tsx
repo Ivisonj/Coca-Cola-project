@@ -10,6 +10,7 @@ import { setCookie, parseCookies } from 'nookies'
 export const AuthContext = createContext({} as AuthContextType)
 
 type User = {
+    id: string
     name: string
     account: string
 }
@@ -35,6 +36,7 @@ export function AuthProvider({ children }) {
     const router = useRouter()
     const [ user, setUser ] = useState<User | null>(null)
     const [ errorResponse, setErrorResponse ] = useState('')
+    console.log('arquivo auth: user', user)
 
     const isAuthenticated = !!user
 
@@ -84,6 +86,10 @@ export function AuthProvider({ children }) {
                 maxAge: response.data.exp
             })
             
+            setCookie(undefined, 'id', response.data.id, {
+                maxAge: response.data.exp
+            })
+
             setUser(response.data)
 
             api.defaults.headers['Authorization'] = `bearer ${response.data.token}`

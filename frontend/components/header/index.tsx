@@ -1,7 +1,9 @@
 'use client'
 import React from "react"
-import { Container, Row } from './styles'
 import { CgMenuGridR } from 'react-icons/cg'
+import { SiCocacola } from 'react-icons/si'
+
+import { Container, IconContainer } from './styles'
 
 export default function Header() {
     const iconStyle = {
@@ -23,13 +25,13 @@ export default function Header() {
     return (
         <>
             <Container>
-                <Row>
+                <IconContainer>
                     {/* <CgMenuGridR style={iconStyle} /> */}
-                </Row>
-                <Row>
-                    <img style={logoStyle} src="https://logosmarcas.net/wp-content/uploads/2020/08/Coca-Cola-Logo-1987-2009.png" alt="coca-cola" />
-                </Row>
-                <Row></Row>
+                </IconContainer>
+                <IconContainer>
+                    <SiCocacola style={{ color: 'red', fontSize: '5.5rem' }} />
+                </IconContainer>
+                <IconContainer />
             </Container>
         </>
     )

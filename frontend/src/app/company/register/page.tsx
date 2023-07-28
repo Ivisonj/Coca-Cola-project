@@ -37,7 +37,7 @@ export default function RegisterProduct() {
         
         try {
            const response = await api.post('/products', data)
-           router.push('/company-dashboard')
+           router.push('/company')
         } catch(error) {
             console.error(error)
         }

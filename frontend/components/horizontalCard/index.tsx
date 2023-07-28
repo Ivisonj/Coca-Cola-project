@@ -1,8 +1,8 @@
 'use client'
 import React from "react"
+import Link from "next/link"
 
 import { Container, ImageContainer, InforContainer, ProductName, Price, LogoImage } from './style'
-import Link from "next/link"
 
 interface VerticalCardProps {
     name: string

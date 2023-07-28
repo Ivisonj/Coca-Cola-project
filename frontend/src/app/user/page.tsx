@@ -6,10 +6,8 @@ import VerticalCard from "@/components/verticalCard"
 import { Container, TitleContainer, Title, CardContainer } from '../../../styles/user.module'
 import { AuthContext } from "../../Context/authContext"
 import { api } from '../../../services/api'
-import { baseApiUrl } from "../page"
-import axios from "axios"
 
-export default function Dashboard() {
+export default function User() {
 
     // const response = await fetch('http://localhost:8080/companies')
     // const responseData = await response.json()
@@ -41,8 +39,8 @@ export default function Dashboard() {
                 <CardContainer>
                     {responseData?.map((item) => (
                         <VerticalCard 
-                        goTo="/menu-selection" 
                         key={item.id} 
+                        id={item.id}
                         name={item.name} 
                         address={item.address} 
                         imageLink={item.imageLink}/>

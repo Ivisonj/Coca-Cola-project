@@ -1,19 +1,19 @@
  import styled from "styled-components"
 
-export const Container = styled.div `
+export const Container = styled.header `
     position: absolute;
     width: 100%;
-    height: 60px;
-    background-color: #fff;
-    // box-shadow: 0px  2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
-    // justify-content: center;
+    height: 60px;
     flex-direction: row;
+    background-color: #fff;
     z-index: 2;
 `
 
-export const Row = styled.div `
+export const IconContainer = styled.aside `
     width: 33%;
     height: 100%;
-    display: grid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `
