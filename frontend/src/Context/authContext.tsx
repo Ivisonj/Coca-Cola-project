@@ -36,7 +36,6 @@ export function AuthProvider({ children }) {
     const router = useRouter()
     const [ user, setUser ] = useState<User | null>(null)
     const [ errorResponse, setErrorResponse ] = useState('')
-    console.log('arquivo auth: user', user)
 
     const isAuthenticated = !!user
 

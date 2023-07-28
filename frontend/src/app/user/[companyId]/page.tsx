@@ -1,4 +1,6 @@
 'use client'
+import { useEffect, useState } from 'react'
+
 import Hearder from '@/components/header'
 import Wave from '@/components/wave'
 import Market from '@/components/market'
@@ -6,36 +8,31 @@ import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
 import AddProductButton from '@/components/buttons/addProductButton'
 import Amount from '@/components/amount'
+import { api } from '@/services/api'
 
 import {  Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../../styles/companyProducts.module'
 
-const contentCards = [
-    {
-      name: "Coca-1",
-      img: '/images/coca-1.png', 
-      price: 5.99
-    },
-    {
-      name: "Coca-2",
-      img: '/images/coca-2.png',
-      price: 7.10
-    },
-    {
-      name: "Coca-3",
-      img: '/images/coca-3.png',
-      price: 9.50
-    },
-    {
-      name: "Coca-4",
-      img: '/images/coca-4.png',
-      price: 10.00
-    },
-   
-]
-
+const defaultImage = '/images/coca-cola-desenho.png'
 
 export default function CompanyProducts({params}: { params: { companyId: string } }) {
-    const totalCards = contentCards.length
+
+    const [ responseData, setResponseData ] = useState()
+    console.log('se liga', )
+
+    //total de cards do carrossel
+    const totalCards = responseData?.length
+
+    useEffect(() => {
+        async function getProducts() {
+            try {
+                const response = await api.get(`/products/parentId/${params.companyId}`)
+                setResponseData(response.data)
+            } catch(err) {
+                console.error(err)
+            }
+        }
+        getProducts()
+    }, [])
 
     return (
         <>
@@ -52,12 +49,12 @@ export default function CompanyProducts({params}: { params: { companyId: string 
             <RightColumn>
                 <CarouselContent>
                     <Carousel totalCards={totalCards}>
-                        {contentCards.map((_, i) => (
+                        {responseData?.map((_, i) => (
                             <Card 
                                 key={i}
-                                name={contentCards[i].name}
-                                img={contentCards[i].img}   
-                                price={contentCards[i].price}          
+                                name={responseData[i]?.name}
+                                price={responseData[i]?.price}          
+                                img={responseData[i]?.imageUrl === null ? defaultImage : `http://localhost:8080/image/${responseData[i]?.imageUrl}`}   
                             />
                         ))}
                     </Carousel>
