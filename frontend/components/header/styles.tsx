@@ -17,3 +17,10 @@ export const IconContainer = styled.aside `
     align-items: center;
     justify-content: center;
 `
+
+export const MenuContainer = styled.aside `
+    width: 33%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+`

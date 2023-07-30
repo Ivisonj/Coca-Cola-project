@@ -2,8 +2,9 @@
 import React from "react"
 import { CgMenuGridR } from 'react-icons/cg'
 import { SiCocacola } from 'react-icons/si'
+import Menu from "../menu"
 
-import { Container, IconContainer } from './styles'
+import { Container, IconContainer, MenuContainer } from './styles'
 
 export default function Header() {
     const iconStyle = {
@@ -25,9 +26,9 @@ export default function Header() {
     return (
         <>
             <Container>
-                <IconContainer>
-                    {/* <CgMenuGridR style={iconStyle} /> */}
-                </IconContainer>
+                <MenuContainer>
+                    <Menu />
+                </MenuContainer>
                 <IconContainer>
                     <SiCocacola style={{ color: 'red', fontSize: '5.5rem' }} />
                 </IconContainer>

@@ -16,8 +16,11 @@ export default function PrimaryButton({ children, width, margin, type= 'button',
     const router = useRouter()
 
     const handleClick = () => {
-        router.push(goTo)
+        if (goTo) {
+            router.push(goTo)
+        }
     }
+    
 
     return (
         <>
