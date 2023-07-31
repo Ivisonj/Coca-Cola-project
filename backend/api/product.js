@@ -34,7 +34,7 @@ module.exports = app => {
             .where({ id: productId })
             .first()
             .then(products => res.json(products))
-            .catch(err => res.select(500).send(err))
+            .catch(err => res.status(500).send(err))
     }
 
     const getByParentId = (req, res) => {
@@ -43,7 +43,6 @@ module.exports = app => {
         app.db('products')
             .select('id', 'name', 'price', 'imageUrl', 'companyId')
             .where({ companyId: companyId }) 
-            .first()
             .then(products => res.json(products)) 
             .catch(err => res.status(500).send(err))
     }

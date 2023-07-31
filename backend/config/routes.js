@@ -53,7 +53,7 @@ module.exports = app => {
     app.route('/image/:imageName') 
         .get((req, res) => {
             const imageName = req.params.imageName
-            const imagePath = path.join(__dirname, '..', 'public', `${imageName}.jpg`)
+            const imagePath = path.join(__dirname, '..', 'public', `${imageName}.png`)
         
             res.sendFile(imagePath)
         })

@@ -52,7 +52,6 @@ module.exports = app => {
         app.db('company')
             .select('id', 'name', 'email', 'address')
             .where({ id: req.params.id })
-            .whereNullable('deletedAt')
             .then(company => res.json(company))
             .catch(err => res.status(500).send(err))
     }
