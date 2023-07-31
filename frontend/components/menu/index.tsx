@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { BiMenuAltLeft } from 'react-icons/bi'
 import { Conatiner, Avatar, MenuIcon, MenuConatiner, MenuOption } from './style'
+import Link from 'next/link'
 
 export default function Menu() {
 
@@ -25,6 +26,8 @@ export default function Menu() {
         router.push('/signin')
     }
 
+    const { 'id': id } = parseCookies()
+
     return (
         <Conatiner className={showMenu ? 'showMenu' : null}>
             {showMenu ? (
@@ -33,7 +36,11 @@ export default function Menu() {
                         <BiMenuAltLeft onClick={handleClick} style={{ fontSize: '3rem', color: '#000' }}/>
                     </MenuIcon>
                     <MenuConatiner>
-                        <MenuOption>perfil</MenuOption>
+                        <MenuOption>
+                            <Link href={`/profile/${id}`} style={{ textDecoration: 'none', color: 'red'}}>
+                                perfil
+                            </Link>
+                        </MenuOption>
                         <MenuOption onClick={goout}>sair</MenuOption>
                     </MenuConatiner>
                 </>

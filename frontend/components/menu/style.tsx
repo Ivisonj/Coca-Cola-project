@@ -22,7 +22,7 @@ export const Avatar = styled.aside `
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100px;
+    border-radius: 100%;
     border: solid 1px #000;
     cursor: pointer;
 `

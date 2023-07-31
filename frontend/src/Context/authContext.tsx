@@ -60,6 +60,10 @@ export function AuthProvider({ children }) {
             setCookie(undefined, 'account', response.data.account, {
                 maxAge: response.data.exp
             })
+
+            setCookie(undefined, 'id', response.data.id, {
+                maxAge: response.data.exp
+            })
             
             setUser(response.data)
 
