@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt-nodejs')
 module.exports = app => {
     const signin = async (req, res) => {
 
-        const company = await app.db('company')
+        const company = await app.db('companies')
             .where({ email: req.body.email }).first()
 
         if(!company) return res.status(400).send('Empresa não encontrada')

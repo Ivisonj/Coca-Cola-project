@@ -18,7 +18,7 @@ module.exports = app => {
     })
 
     const companyStrategy = new Strategy(params, (payload, done) => {
-        app.db('company')
+        app.db('companies')
             .where({ id: payload.id })
             .first()
             .then(company => done(null, company ? {...payload} : false))

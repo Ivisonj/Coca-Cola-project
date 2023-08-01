@@ -4,14 +4,14 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('products', table => {
-        table.increments('id').primary
+        table.increments('id').primary()
         table.string('name').notNullable()
-        table.integer('price').notNullable()
-        table.string('imageUrl', 2000).notNullable()
+        table.float('price').notNullable()
         table.integer('companyId').references('id')
-            .inTable('company').notNullable()
+            .inTable('companies').notNullable()
+        table.string('imageUrl', 2000).nullable()
     })
-}
+};
 
 /**
  * @param { import("knex").Knex } knex
@@ -19,4 +19,4 @@ exports.up = function(knex) {
  */
 exports.down = function(knex) {
     return knex.schema.dropTable('products')
-}
+};

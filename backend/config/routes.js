@@ -21,11 +21,11 @@ module.exports = app => {
         .get(app.api.user.getById)
         
     app.route('/companies')
-        // .all(app.config.passport.authenticate())
+        .all(app.config.passport.authenticate())
         .get(app.api.company.get)
 
     app.route('/companies/:id')
-        // .all(app.config.passport.authenticate()) 
+        .all(app.config.passport.authenticate()) 
         .put(app.api.company.save)       
         .get(app.api.company.getById)
         .delete(app.api.company.remove)

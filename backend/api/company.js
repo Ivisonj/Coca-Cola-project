@@ -14,7 +14,7 @@ module.exports = app => {
         if(req.params.id) company.id = req.params.id
 
         try {
-            const existEmailInDb = await app.db('company')
+            const existEmailInDb = await app.db('companies')
                 .where({ email: company.email}).first()
 
             if(!company.id) {
@@ -28,13 +28,13 @@ module.exports = app => {
         company.password = encryptPassword(company.password)
 
         if(company.id) {
-            app.db('company')
+            app.db('companies')
                 .update(company)
                 .where({ id: req.params.id })
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
         } else {
-            app.db('company')
+            app.db('companies')
                 .insert(company)
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
@@ -42,22 +42,22 @@ module.exports = app => {
     }
 
     const get = (req, res) => {
-        app.db('company')
-            .select('id', 'name', 'email', 'address')
+        app.db('companies')
+            .select('id', 'name', 'email', 'address', 'imageUrl')
             .then(companies => res.json(companies))
             .catch(err => res.status(500).send(err))
     }
 
     const getById = (req, res) => {
-        app.db('company')
-            .select('id', 'name', 'email', 'address')
+        app.db('companies')
+            .select('id', 'name', 'email', 'address', 'imageUrl')
             .where({ id: req.params.id })
             .then(company => res.json(company))
             .catch(err => res.status(500).send(err))
     }
 
     const remove = (req, res) => {
-        app.db('company')
+        app.db('companies')
             .where({ id: req.params.id }).del()
             .then(_ => res.status(204).send())
             .catch(err => res.status(500).send(err))
