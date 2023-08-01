@@ -9,7 +9,10 @@ module.exports = app => {
     }
 
     const save = async (req, res) => {
+
         const user = { ...req.body }
+
+        if(req.params.id) user.id = req.params.id
 
         try {
             const existEmailInDb = await app.db('users')
@@ -25,7 +28,13 @@ module.exports = app => {
 
         user.password = encryptPassword(user.password)
 
-        if(!user.id) {
+        if(user.id) {
+            app.db('users')
+                .update(user)
+                .where({ id: user.id })
+                .then(_ => res.status(204).send())
+                .catch(err => res.status(500).send(err))
+        } else {
             app.db('users')
                 .insert(user)
                 .then(_ => res.status(204).send())
@@ -49,5 +58,12 @@ module.exports = app => {
             .catch(err => res.status(500).send(err))
     }
 
-    return { save, get, getById, }
+    const remove = (req, res) => {
+        app.db('users')
+            .where({ id: user.id }).del()
+            .then(_ => res.status(204).send())
+            .catch(err => res.status(500).send(err))
+    }
+
+    return { save, get, getById, remove}
 }
