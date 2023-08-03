@@ -1,6 +1,9 @@
 module.exports = app => {
 
     const save = (req, res) => {
+
+        const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
+
         const product = { ...req.body }
 
         if(req.params.id) product.id = req.params.id
@@ -48,10 +51,20 @@ module.exports = app => {
     }
 
     const remove = async (req, res) => {
-        app.db('products')
-            .where({ id: req.params.id }).del()
-            .then(_ => res.status(204).send())
-            .catch(err => res.status(500).send(err))
+        try {
+            const rowsDeleted = await app.db('products')
+                .where({ id: req.params,id }).del()
+
+                try {
+                    existsOrError(rowsDeleted, 'Produto não foi encontrado')
+                } catch(msg) {
+                    return res.status(400).send(msg)
+                }
+
+                res.status(204).send()
+        } catch(msg) {
+            res.status(500).send(msg)
+        }
     }
     
     return { save, get, getById, getByParentId, remove }

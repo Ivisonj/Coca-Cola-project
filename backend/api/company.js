@@ -25,15 +25,20 @@ module.exports = app => {
             return res.status(400).send(msg)
         }
 
-        company.password = encryptPassword(company.password)
-
         if(company.id) {
+            if(req.params.password) {
+                delete company.password
+            }
+
             app.db('companies')
                 .update(company)
                 .where({ id: req.params.id })
+                .whereNull('deletedAt')
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
         } else {
+            company.password = encryptPassword(company.password)
+
             app.db('companies')
                 .insert(company)
                 .then(_ => res.status(204).send())
@@ -44,6 +49,7 @@ module.exports = app => {
     const get = (req, res) => {
         app.db('companies')
             .select('id', 'name', 'email', 'address', 'imageUrl')
+            .whereNull('deletedAt')
             .then(companies => res.json(companies))
             .catch(err => res.status(500).send(err))
     }
@@ -52,15 +58,22 @@ module.exports = app => {
         app.db('companies')
             .select('id', 'name', 'email', 'address', 'imageUrl')
             .where({ id: req.params.id })
+            .whereNull('deletedAt')
             .then(company => res.json(company))
             .catch(err => res.status(500).send(err))
     }
 
-    const remove = (req, res) => {
-        app.db('companies')
-            .where({ id: req.params.id }).del()
-            .then(_ => res.status(204).send())
-            .catch(err => res.status(500).send(err))
+    const remove = async (req, res) => {
+        try {
+            const rowsUpdated = await app.db('companies')
+                .update({ deletedAt: new Date() })
+                .where({ id: req.params.id })
+            existsOrError(rowsUpdated, 'Empresa não encontrada')
+
+            res.status(204).send()
+        } catch(msg) {
+            res.status(400).send(msg)
+        }
     }
 
     return { save, get, getById, remove }
