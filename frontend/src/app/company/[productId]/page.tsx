@@ -61,7 +61,6 @@ export default function Product({ params }: { params: { productId: string } }) {
 
         const fileResponse = await api.post('/upload', formData)
         const fileName = fileResponse.data.replace('.png', '')
-        console.log(fileName)
 
         const putform = await api.put(`/products/${params.productId}`, {
             name: data.name,

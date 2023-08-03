@@ -16,7 +16,7 @@ export const Conatiner = styled.div `
     }
 `
 
-export const Avatar = styled.aside `
+export const Avatar = styled.img `
     width: 55px;
     height: 90%;
     display: flex;

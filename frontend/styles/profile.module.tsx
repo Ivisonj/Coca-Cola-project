@@ -24,7 +24,7 @@ export const RightColumn = styled.div `
     justify-content: center; 
 `
 
-export const Avatar = styled.aside `
+export const Avatar = styled.img `
     width: 50%;
     height: 50%;
     display: flex;
