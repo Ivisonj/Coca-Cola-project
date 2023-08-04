@@ -7,15 +7,12 @@ import { Container, TitleContainer, Title, CardContainer } from '../../../styles
 import { AuthContext } from "../../Context/authContext"
 import { api } from '../../../services/api'
 
-export default function User() {
+const defaultProfileImage = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpWIUTEbl3Km2gu10Jsib39To4S4IYsn8QhA&usqp=CAU'
 
-    // const response = await fetch('http://localhost:8080/companies')
-    // const responseData = await response.json()
-    // console.log(JSON.stringify(responseData))
+export default function User() {
     
     const { user } = useContext(AuthContext)
     const [responseData, setResponseData] = useState()
-    console.log(responseData)
 
     useEffect(() => {
         async function userData() {
@@ -43,7 +40,7 @@ export default function User() {
                         id={item.id}
                         name={item.name} 
                         address={item.address} 
-                        imageLink={item.imageLink}/>
+                        imageLink={item.imageUrl === null ? defaultProfileImage : `http://localhost:8080/image/${item.imageUrl}`}/>
                     ))}
                 </CardContainer>
             </Container>

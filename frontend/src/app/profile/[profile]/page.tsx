@@ -51,22 +51,26 @@ export default function Profile({params}: { params: {profile: string} }) {
 
         try {
             const fileResponse = await api.post('/upload', formData)
-            const fileName = fileResponse.data.replace('.png', '')
+            const fileName = fileResponse.data
+
+            const name = data.name === undefined ? responseData?.name : undefined
+            const email = data.email === undefined ? responseData?.email : undefined
+            const address = data.address === undefined ? responseData?.address : undefined
 
             if(accountType === 'company') {
                 const putCompanyForm = await api.put(`/companies/${params.profile}`, {
-                    name: data.name,
-                    email: data.email, 
-                    address: data.address, 
+                    name: name,
+                    email: email, 
+                    address: address, 
                     imageUrl: fileName
                 })
 
                 router.push('/company')
             } else {
                 const putUserForm = await api.put(`/user/${params.profile}`, {
-                    name: data.name,
-                    email: data.email, 
-                    address: data.address, 
+                    name: name,
+                    email: email, 
+                    address: address, 
                     imageUrl: fileName
                 })
 
