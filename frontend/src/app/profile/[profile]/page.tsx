@@ -34,11 +34,11 @@ export default function Profile({params}: { params: {profile: string} }) {
                     const companyData = await api.get(`/companies/${params.profile}`)
                     setResponseData(companyData.data[0])
                 } else {
-                    const userData = await api.get(`/companies/${params.profile}`)
-                    setResponseData(userData.data[0])
+                    const userData = await api.get(`/users/${params.profile}`)
+                    setResponseData(userData.data)
                 }
             } catch(erro) {
-                console.log(error)
+                console.log(erro)
             }
         }
         getUserData()
@@ -53,28 +53,21 @@ export default function Profile({params}: { params: {profile: string} }) {
             const fileResponse = await api.post('/upload', formData)
             const fileName = fileResponse.data
 
-            const name = data.name === undefined ? responseData?.name : undefined
-            const email = data.email === undefined ? responseData?.email : undefined
-            const address = data.address === undefined ? responseData?.address : undefined
-
+            const userInform = {
+                name: data.name === undefined ? responseData?.name : undefined, 
+                email: data.email === undefined ? responseData?.email : undefined,
+                address: data.address === undefined ? responseData?.address : undefined,
+                imageUrl: fileName
+            }
+            
             if(accountType === 'company') {
-                const putCompanyForm = await api.put(`/companies/${params.profile}`, {
-                    name: name,
-                    email: email, 
-                    address: address, 
-                    imageUrl: fileName
-                })
+                const putCompanyForm = await api.put(`/companies/${params.profile}`, userInform)
 
                 router.push('/company')
             } else {
-                const putUserForm = await api.put(`/user/${params.profile}`, {
-                    name: name,
-                    email: email, 
-                    address: address, 
-                    imageUrl: fileName
-                })
+                const putUserForm = await api.put(`/users/${params.profile}`, userInform)
 
-                router.push('user')
+                router.push('/user')
             }
         } catch(erro) {
             console.error(erro)

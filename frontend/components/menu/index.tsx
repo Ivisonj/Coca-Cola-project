@@ -28,7 +28,7 @@ export default function Menu() {
                     setResponseData(companyData.data[0])
                 } else {
                     const userData = await api.get(`/users/${id}`)
-                    setResponseData(userData.data[0])
+                    setResponseData(userData.data)
                 }
             } catch (erro) {
                 console.error(erro)
