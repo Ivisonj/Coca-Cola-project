@@ -5,9 +5,9 @@ export const Section = styled.section`
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
-`;
+`
 
 const infiniteWaveAnimation = keyframes`
     0% {

@@ -1,24 +1,16 @@
 'use client'
 import React, { useState } from 'react';
 
+import { useAmountStore } from '@/stores/useStore';
 import { Conatiner, Content, Button } from './style';
+
 
 interface AmountProps  {
     type: string
 }
 
 export default function Amount(props: AmountProps) {
-    const [ number, setNumber ] = useState(0)
-
-    const incrementNum = () => {
-        setNumber(number + 1)
-    }
-
-    const decrementNum = () => {
-        if(number > 0) {
-            setNumber(number - 1)
-        }
-    }
+    const { number, incrementNum, decrementNum } = useAmountStore()
 
     const redButton = {
         backgroundColor: 'red',

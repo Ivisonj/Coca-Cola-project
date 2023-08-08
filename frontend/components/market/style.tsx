@@ -5,7 +5,7 @@ export const Container = styled.div `
     width: 9%;
     height: 60px;
     right: 0px;
-    z-index: 3;
+    z-index: 4;
     transition: 0.5s all ease-in-out;
 
     &.expanded {
@@ -13,11 +13,11 @@ export const Container = styled.div `
         width: 18%;
         height: 100%;
         right: 0px;
-        z-index: 3;
+        z-index: 4;
         transition: 0.5s all ease-in-out;
     }
 ` 
-export const Icon = styled.div `
+export const Icons = styled.aside `
     width: 100%;
     height: 60px;
     display: flex;
@@ -29,6 +29,43 @@ export const Icon = styled.div `
     &.justify {
         justify-content: space-around;
     }
+`
+
+export const MarketIcon = styled.aside `
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+export const IconLeftColumn = styled.aside `
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+`
+
+export const IconRightColumn = styled.aside `
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+`
+
+export const AmountProducts = styled.aside `
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 1px #000;
+    border-radius: 100%;
+    background-color: #fff;
+
+    font-size: .7rem;
+    color: #000;
 `
 
 export const ProductDetail = styled.div `

@@ -17,7 +17,6 @@ const defaultImage = '/images/coca-cola-desenho.png'
 export default function CompanyProducts({params}: { params: { companyId: string } }) {
 
     const [ responseData, setResponseData ] = useState()
-    console.log('se liga', )
 
     //total de cards do carrossel
     const totalCards = responseData?.length
