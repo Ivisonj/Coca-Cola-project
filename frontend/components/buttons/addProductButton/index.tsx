@@ -14,18 +14,16 @@ interface ButtonProps {
 }
 
 export default function AddProductButton(props: ButtonProps) {
-  const [isActive, setisActive] = useState(false)
   const { buttonState, toggleButton } = useStore()
 
   const handleClick = () => {
-    setisActive(!isActive)
     toggleButton()
   }
 
   return (
     <>
-        {isActive ? (
-          <StyleButton onClick={handleClick} className="active">
+        {buttonState ? (
+          <StyleButton onClick={handleClick} className={buttonState ? 'active' : null}>
             <IoCheckmarkDoneCircleSharp style={{ width: '25px', height: '25px', color: "#fff" }}/>
             <Text>Produto Adicionado ao Carrinho</Text>
           </StyleButton>

@@ -1,8 +1,27 @@
 import styled from "styled-components"
 
-export const Container = styled.div `
+export const MarketBackground = styled.div `
     position: absolute;
     width: 9%;
+    height: 60px;
+    right: 0px;
+    z-index: 3;
+    transition: 0.5s all ease-in-out;
+
+    &.showBackground {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        right: 0px;
+        background: linear-gradient(90deg, rgba(46,46,46,0.1966911764705882) 0%, rgba(46,46,46,0.46279761904761907) 99%, rgba(55,55,55,1) 100%, rgba(210,200,200,1) 100%, rgba(0,212,255,1) 100%);
+        z-index: 3;
+        transition: 0.5s all ease-in-out;
+    }    
+` 
+
+export const Container = styled.div `
+    position: absolute;
+    width: 100%;
     height: 60px;
     right: 0px;
     z-index: 4;
@@ -32,6 +51,14 @@ export const Icons = styled.aside `
 `
 
 export const MarketIcon = styled.aside `
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
+export const BackIcon = styled.aside `
     width: 60px;
     height: 100%;
     display: flex;
