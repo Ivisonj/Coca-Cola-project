@@ -121,7 +121,7 @@ export const PurchaseConfirmation = styled.div `
     }
 `
 
-export const Product = styled.div `
+export const ProductImage = styled.img `
     margin-top: 30px;
     width: 50%;
     height: 32%;

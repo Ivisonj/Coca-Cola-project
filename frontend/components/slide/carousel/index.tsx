@@ -28,7 +28,6 @@ export default function Carousel({ children, totalCards }: CarouselProps ) {
         setTimeout(() => {
             setRightButtonState(false)
         }, 2000)
-        console.log('direitoooo', rightButtonState)
     }
     
     const leftHandleClick = () => {
@@ -36,7 +35,6 @@ export default function Carousel({ children, totalCards }: CarouselProps ) {
         setTimeout(() => {
             setLeftButtonState(false)
         }, 2000)
-        console.log('esquerdoooo', leftButtonState)
     }
 
     const incrementNumber = () => {

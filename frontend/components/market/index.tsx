@@ -1,5 +1,5 @@
 'use client'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import {
   MarketBackground,
@@ -12,7 +12,7 @@ import {
   AmountProducts, 
   ProductDetail, 
   PurchaseConfirmation, 
-  Product, 
+  ProductImage, 
   ProductName, 
   Text } from "./style"
 
@@ -22,12 +22,17 @@ import MainButton from '../buttons/PrimaryButton'
 import { BsFillCartFill } from 'react-icons/bs'
 import { IoMdArrowBack } from 'react-icons/io'
 import { useStore } from '@/stores/useStore'
+import { useCurrentProduct } from '@/stores/useStore'
+import { api } from '@/services/api'
+
+const defaultImage = '/images/coca-cola-desenho.png'
 
 export default function Market() {
 
   const [isVisible, setIsVisible] = useState(false);
   const { buttonState, toggleButton } = useStore()
   const { number } = useAmountStore()
+  const { currentProduct } = useCurrentProduct()
 
   const handleClick = () => {
     setIsVisible(!isVisible);
@@ -43,6 +48,9 @@ export default function Market() {
     height: '25px', 
     color: "#fff"
   }
+
+  let totalPrice = number * currentProduct?.price
+  const productPrice = currentProduct?.price
 
   return (
     <>
@@ -66,14 +74,14 @@ export default function Market() {
             </MarketIcon>
           </Icons>
           <ProductDetail className={!isVisible ? 'donShowDisplay' : null}>
-            <Product />
-            <ProductName>Nome do Produto</ProductName>
-            <Text>R$10,00</Text>
+            <ProductImage src={currentProduct?.imageUrl === null ? defaultImage : `http://localhost:8080/image/${currentProduct?.imageUrl}`} alt={currentProduct?.name} />
+            <ProductName>{currentProduct?.name}</ProductName>
+            <Text>{`R$${productPrice.toFixed(2)}`}</Text>
             <Amount type='firtsType'/>
           </ProductDetail>
           <PurchaseConfirmation className={!isVisible ? 'donShowDisplay' : null}>
             <Text style={{ color: "#000"}}>Total</Text>
-            <Text style={{ color: "#000"}}>R$10,00</Text>
+            <Text style={{ color: "#000"}}>{`R$${totalPrice.toFixed(2)}`}</Text>
             <MainButton link='/' type='primary'>Finalizar Pedido</MainButton>
           </PurchaseConfirmation>
         </Container>

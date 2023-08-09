@@ -1,6 +1,8 @@
 'use client'
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+
 import { CarouselContext } from '../carousel/index'
+import { useCurrrentProductIndex } from '../../../stores/useStore'
 
 import { CardContainer, ProductImage, ProductPrice } from './style'
 
@@ -10,8 +12,13 @@ interface CardProps {
     price: number
 }
 
-export default function Card({ img, name, price }: CardProps) {
+export default function Card({ img, name, price, onClick }: CardProps) {
     const { currentActive, index } = useContext(CarouselContext)
+    const { setCurrentProductIndex } = useCurrrentProductIndex()
+
+    useEffect(() => {
+        setCurrentProductIndex(currentActive)
+    }, [currentActive, setCurrentProductIndex])
 
     return (
         <>

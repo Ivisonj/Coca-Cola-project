@@ -8,6 +8,8 @@ import Carousel from '@/components/slide/carousel'
 import Card from '@/components/slide/card'
 import AddProductButton from '@/components/buttons/addProductButton'
 import Amount from '@/components/amount'
+import { useCurrentProduct } from '../../../../stores/useStore'
+import { useCurrrentProductIndex } from '../../../../stores/useStore'
 import { api } from '@/services/api'
 
 import {  Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../../styles/companyProducts.module'
@@ -17,6 +19,14 @@ const defaultImage = '/images/coca-cola-desenho.png'
 export default function CompanyProducts({params}: { params: { companyId: string } }) {
 
     const [ responseData, setResponseData ] = useState()
+    const { currentProduct, setCurrentProduct } = useCurrentProduct()
+    const { currentProductIndex } = useCurrrentProductIndex()
+
+    useEffect(() => {
+        if (responseData && responseData.length > 0) {
+            setCurrentProduct(responseData[currentProductIndex])
+        }
+    }, [responseData, currentProductIndex])
 
     //total de cards do carrossel
     const totalCards = responseData?.length
