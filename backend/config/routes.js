@@ -46,7 +46,20 @@ module.exports = app => {
     app.route('/products/parentId/:id')
         // .all(app.config.passport.authenticate())
         .get(app.api.product.getByParentId)
-    
+
+    app.route('/orders')
+        .all(app.config.passport.authenticate())
+        .post(app.api.orders.save)
+        .get(app.api.orders.get)
+
+    app.route('/orders/companyId/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.orders.getByCompanyId)
+
+    app.route('/orders/userId/:id')
+        .all(app.config.passport.authenticate())
+        .get(app.api.orders.getByUserId)
+
     app.route('/upload')
         .post(multer(multerConfig).single('file'), (req, res) => {
             return res.json(req.file.filename)
@@ -55,7 +68,7 @@ module.exports = app => {
     app.route('/image/:imageName') 
         .get((req, res) => {
             const imageName = req.params.imageName
-            const imagePath = path.join(__dirname, '..', 'public', `${imageName}.png`)
+            const imagePath = path.join(__dirname, '..', 'public', `${imageName}`)
         
             res.sendFile(imagePath)
         })
