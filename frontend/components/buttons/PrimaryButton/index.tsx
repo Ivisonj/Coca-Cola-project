@@ -7,24 +7,15 @@ interface ButtonProps {
     children?: string
     width?: string 
     margin?: string
-    goTo?: string
+    onClick?: () => void 
     type?: "button" | "submit"
     bgColor?: 'red' | 'MediumSeaGreen' | 'Silver'
 }
 
-export default function PrimaryButton({ children, width, margin, type= 'button', goTo, bgColor= 'red' }: ButtonProps) {
-    const router = useRouter()
-
-    const handleClick = () => {
-        if (goTo) {
-            router.push(goTo)
-        }
-    }
-    
-
+export default function PrimaryButton({ children, width, margin, onClick, type= 'button', bgColor= 'red' }: ButtonProps) {
     return (
         <>
-            <StyleButton width={width} margin={margin} type={type} onClick={handleClick} bgColor={bgColor}>
+            <StyleButton width={width} margin={margin} type={type} onClick={onClick} bgColor={bgColor}>
                 {children}
             </StyleButton>
         </>
