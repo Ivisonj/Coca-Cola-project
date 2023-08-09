@@ -1,8 +1,8 @@
 import { create } from 'zustand'
 
-interface useStoreState {
-  buttonState: boolean, 
-  toggleButton: () => void
+interface useAddProductButtonState {
+  addProductButtonState: boolean, 
+  setAddProductButtonState: () => void
 }
  
 interface useLeftButtonState {
@@ -31,9 +31,10 @@ interface CurrentProducteIndexState {
   setCurrentProductIndex: () => void
 }
 
-export const useStore = create<useStoreState>(set => ({
-    buttonState: false,
-    toggleButton: () => set(state => ({ buttonState: !state.buttonState }))
+export const useAddProductButton = create<useAddProductButtonState>(set => ({
+    addProductButtonState: false,
+    setAddProductButtonState: (newState: boolean) => set(state => ({
+       addProductButtonState: newState }))
 }))
 
 export const useLeftButton = create<useLeftButtonState>(set => ({

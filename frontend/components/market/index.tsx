@@ -22,7 +22,7 @@ import { useAmountStore } from '@/stores/useStore'
 import PrimaryButton from '../buttons/PrimaryButton'
 import { BsFillCartFill } from 'react-icons/bs'
 import { IoMdArrowBack } from 'react-icons/io'
-import { useStore } from '@/stores/useStore'
+import { useAddProductButton } from '@/stores/useStore'
 import { useCurrentProduct } from '@/stores/useStore'
 import { api } from '@/services/api'
 
@@ -31,9 +31,9 @@ const defaultImage = '/images/coca-cola-desenho.png'
 export default function Market() {
 
   const [isVisible, setIsVisible] = useState(false);
-  const { buttonState, toggleButton } = useStore()
-  const { number } = useAmountStore()
+  const { addProductButtonState, setAddProductButtonState } = useAddProductButton()
   const { currentProduct } = useCurrentProduct()
+  const { number } = useAmountStore()
   const { 'id': userId } = parseCookies()
 
   const handleClick = () => {
@@ -42,7 +42,7 @@ export default function Market() {
 
   const comeBack = () => {
     setIsVisible(!isVisible)
-    toggleButton()
+    setAddProductButtonState(false)
   }
 
   const IconStyle = {
@@ -63,6 +63,10 @@ export default function Market() {
 
     try {
       const response = await api.post('/orders', productData)
+
+      setIsVisible(false)
+      setAddProductButtonState(false)
+
     } catch(erro) {
       console.error(erro)
     }
@@ -73,8 +77,8 @@ export default function Market() {
 
   return (
     <>
-      <MarketBackground className={buttonState ? 'showBackground' : isVisible ? 'showBackground' : null}>
-        <Container  className={buttonState ? 'expanded' : isVisible ? 'expanded' : null} >
+      <MarketBackground className={addProductButtonState ? 'showBackground' : isVisible ? 'showBackground' : null}>
+        <Container  className={addProductButtonState ? 'expanded' : isVisible ? 'expanded' : null} >
           <Icons className={isVisible ? 'justify' : null}>
             {isVisible && (
               <BackIcon>
@@ -86,7 +90,7 @@ export default function Market() {
                 <BsFillCartFill style={IconStyle}/> 
               </IconLeftColumn>
               <IconRightColumn>
-                {buttonState ? (
+                {addProductButtonState ? (
                   <AmountProducts>{number}</AmountProducts>
                 ) : null}
               </IconRightColumn>
