@@ -52,6 +52,10 @@ module.exports = app => {
         .post(app.api.orders.save)
         .get(app.api.orders.get)
 
+    app.route('/orders/:id')
+        .all(app.config.passport.authenticate())
+        .delete(app.api.orders.remove)
+
     app.route('/orders/companyId/:id')
         .all(app.config.passport.authenticate())
         .get(app.api.orders.getByCompanyId)
