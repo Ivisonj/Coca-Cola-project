@@ -13,7 +13,7 @@ module.exports = app => {
 
     const get = (req, res) => {
         app.db('orders')
-            .select('id', 'productName', 'price', 'amount', 'companyId', 'userId')
+            .select('id', 'productName', 'price', 'amount', 'companyName', 'companyId', 'userName',  'userId', 'imageUrl')
             .then(order => res.json(order))
             .catch(err => res.status(500).send(err))
     }
@@ -22,7 +22,7 @@ module.exports = app => {
         const companyId = req.params.id
 
         app.db('orders')
-            .select('id', 'productName', 'price', 'amount', 'companyId', 'userId')
+            .select('id', 'productName', 'price', 'amount', 'companyName', 'companyId', 'userName',  'userId', 'imageUrl')
             .where({ companyId:  companyId})
             .then(orders => res.json(orders))
             .catch(err => res.status(500).send(err))
@@ -32,7 +32,7 @@ module.exports = app => {
         const userId = req.params.id
 
         app.db('orders')
-            .select('id', 'productName', 'price', 'amount', 'companyId', 'userId')
+            .select('id', 'productName', 'price', 'amount', 'companyName', 'companyId', 'userName',  'userId', 'imageUrl')
             .where({ userId: userId })
             .then(orders => res.json(orders))
             .catch(err => res.status(500).send(err))

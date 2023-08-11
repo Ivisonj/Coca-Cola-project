@@ -8,10 +8,13 @@ exports.up = function(knex) {
         table.string('productName').notNullable()
         table.float('price').notNullable()
         table.integer('amount').notNullable()
+        table.string('companyName').notNullable()
         table.integer('companyId').references('id')
             .inTable('companies').notNullable()
+        table.string('userName').notNullable()
         table.integer('userId').references('id')
             .inTable('users').notNullable()
+        table.string('imageUrl', 2000).nullable()
     })
 };
 
