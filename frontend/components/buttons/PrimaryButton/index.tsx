@@ -9,7 +9,7 @@ interface ButtonProps {
     margin?: string
     onClick?: () => void 
     type?: "button" | "submit"
-    bgColor?: 'red' | 'MediumSeaGreen' | 'Silver'
+    bgColor?: 'red' | 'MediumSeaGreen' | 'DarkGray' 
 }
 
 export default function PrimaryButton({ children, width, margin, onClick, type= 'button', bgColor= 'red' }: ButtonProps) {

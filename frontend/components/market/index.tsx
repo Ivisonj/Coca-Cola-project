@@ -33,8 +33,30 @@ export default function Market() {
   const [isVisible, setIsVisible] = useState(false);
   const { addProductButtonState, setAddProductButtonState } = useAddProductButton()
   const { currentProduct } = useCurrentProduct()
+  const [ additionalData, setAdditionalData ] = useState({})
   const { number } = useAmountStore()
   const { 'id': userId } = parseCookies()
+
+  useEffect(() => {
+      async function getAdditionalData() { 
+        try {
+          const getCompanyName = await api.get(`/companies/${currentProduct?.companyId}`)
+
+          const getUserName = await api.get(`/users/${userId}`)
+
+          const allAdditionalData = {
+            companyName: getCompanyName.data[0].name,
+            userName: getUserName.data.name            
+          }
+
+          setAdditionalData(allAdditionalData)
+
+        } catch (erro) {
+          console.error(erro)
+        }
+      }
+      getAdditionalData()
+  }, [])
 
   const handleClick = () => {
     setIsVisible(!isVisible);
@@ -57,8 +79,11 @@ export default function Market() {
       productName: currentProduct?.name,
       price: currentProduct?.price,
       amount: number, 
+      companyName: additionalData?.companyName,
       companyId: currentProduct?.companyId,
-      userId: userId
+      userName: additionalData?.userName,
+      userId: userId,
+      imageUrl: currentProduct?.imageUrl,
     }
 
     try {

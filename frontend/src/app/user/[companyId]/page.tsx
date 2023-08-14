@@ -1,5 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
+import { parseCookies } from 'nookies'
 
 import Hearder from '@/components/header'
 import Wave from '@/components/wave'
@@ -18,9 +19,10 @@ const defaultImage = '/images/coca-cola-desenho.png'
 
 export default function CompanyProducts({params}: { params: { companyId: string } }) {
 
+    const { 'id': userId } = parseCookies()
+    const { currentProductIndex } = useCurrrentProductIndex()
     const [ responseData, setResponseData ] = useState()
     const { currentProduct, setCurrentProduct } = useCurrentProduct()
-    const { currentProductIndex } = useCurrrentProductIndex()
 
     useEffect(() => {
         if (responseData && responseData.length > 0) {
@@ -34,8 +36,9 @@ export default function CompanyProducts({params}: { params: { companyId: string 
     useEffect(() => {
         async function getProducts() {
             try {
-                const response = await api.get(`/products/parentId/${params.companyId}`)
-                setResponseData(response.data)
+                const productResponse = await api.get(`/products/parentId/${params.companyId}`)
+                setResponseData(productResponse.data)
+
             } catch(err) {
                 console.error(err)
             }

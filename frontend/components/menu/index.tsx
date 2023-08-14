@@ -64,6 +64,11 @@ export default function Menu() {
                                 perfil
                             </Link>
                         </MenuOption>
+                        <MenuOption>
+                            <Link href={`/orders/${id}`} style={{ textDecoration: 'none', color: 'red'}}>
+                                pedidos
+                            </Link>
+                        </MenuOption>
                         <MenuOption onClick={goout}>sair</MenuOption>
                     </MenuConatiner>
                 </>
