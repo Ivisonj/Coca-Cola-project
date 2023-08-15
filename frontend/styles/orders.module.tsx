@@ -44,5 +44,7 @@ export const UserContent = styled.div `
     width: 100%;
     height: 100%;
     display: flex;
-    padding-top: 60px;
+    flex-direction: column; 
+    align-items: center;
+    padding: 70px 60px 0px 60px;
 ` 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { parseCookies } from 'nookies'
-import { Container, LeftColumn, RightColumn, ProductImage, Title, Information } from './style'
+import { Container, CardContainer, LeftColumn, RightColumn, ProductImage, Title, Information } from './style'
 import { api } from '@/services/api'
 
 const defaultImage = '/images/coca-cola-desenho.png'
@@ -32,33 +32,33 @@ export default function OrderCard() {
     }, [])
 
     return (
-        <div>
-        {responseData?.map((item) => (
-            <Container key={item.id}>
-                <LeftColumn>
-                    <ProductImage src={item.imageUrl === null ? defaultImage : `http://localhost:8080/image/${item.imageUrl}`} alt={item.name} />
-                </LeftColumn>
-                <RightColumn>
-                    <Title>Detalhes do Produto:</Title>
-                    <Information>
-                        <strong>Nome: </strong>
-                        {item.productName}
-                    </Information>
-                    <Information>
-                        <strong>Quantidade: </strong>
-                        {item.amount}
-                    </Information>
-                    <Information>
-                        <strong>Preço: </strong>
-                        {item.price.toFixed(2)}
-                    </Information>
-                    <Information>
-                        <strong>Vendedor: </strong>
-                        {item.companyName}
-                    </Information>
-                </RightColumn>
-            </Container>
-        ))}
-    </div>
+        <Container>
+            {responseData?.map((item) => (
+                <CardContainer key={item.id}>
+                    <LeftColumn>
+                        <ProductImage src={item.imageUrl === null ? defaultImage : `http://localhost:8080/image/${item.imageUrl}`} alt={item.name} />
+                    </LeftColumn>
+                    <RightColumn>
+                        <Title>Detalhes do Produto:</Title>
+                        <Information>
+                            <strong>Nome: </strong>
+                            {item.productName}
+                        </Information>
+                        <Information>
+                            <strong>Quantidade: </strong>
+                            {item.amount}
+                        </Information>
+                        <Information>
+                            <strong>Preço: </strong>
+                            {item.price.toFixed(2)}
+                        </Information>
+                        <Information>
+                            <strong>Vendedor: </strong>
+                            {item.companyName}
+                        </Information>
+                    </RightColumn>
+                </CardContainer>
+            ))}
+    </Container>
     )
 }

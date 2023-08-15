@@ -1,9 +1,16 @@
 import styled from "styled-components"
 
-export const Container = styled.div `
+export const Container = styled.section `
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+`
+
+export const CardContainer = styled.div `
     width: 320px;
     height: 200px;
-    margin: 50px 50px;
+    margin: 20px 10px;
     display: flex;
     border-radius: 20px;
     background: linear-gradient(0deg, rgba(71,4,4,1) 0%, rgba(241,50,50,1) 100%, rgba(55,55,55,1) 100%, rgba(210,200,200,1) 100%, rgba(200,53,53,1) 100%, rgba(255,90,90,1) 100%);

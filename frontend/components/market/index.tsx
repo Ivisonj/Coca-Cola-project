@@ -36,19 +36,20 @@ export default function Market() {
   const [ additionalData, setAdditionalData ] = useState({})
   const { number } = useAmountStore()
   const { 'id': userId } = parseCookies()
+  // console.log('fora do useEffect', additionalData)
 
   useEffect(() => {
       async function getAdditionalData() { 
         try {
           const getCompanyName = await api.get(`/companies/${currentProduct?.companyId}`)
-
+          
           const getUserName = await api.get(`/users/${userId}`)
-
+          
           const allAdditionalData = {
             companyName: getCompanyName.data[0].name,
             userName: getUserName.data.name            
           }
-
+         
           setAdditionalData(allAdditionalData)
 
         } catch (erro) {
@@ -86,6 +87,7 @@ export default function Market() {
       imageUrl: currentProduct?.imageUrl,
     }
 
+    // console.log(productData)
     try {
       const response = await api.post('/orders', productData)
 

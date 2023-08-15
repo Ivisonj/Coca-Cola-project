@@ -38,6 +38,7 @@ export default function Orders({params}: {params: {id: string}}) {
 
             ) : (
                 <UserContent>
+                    <Title>pedidos</Title>
                     <OrderCard />
                 </UserContent>
             )}
