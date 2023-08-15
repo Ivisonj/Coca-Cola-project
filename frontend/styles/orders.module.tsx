@@ -39,3 +39,10 @@ export const ButtonContainer = styled.aside `
     align-items: center;
     justify-content: flex-end;
 `
+
+export const UserContent = styled.div `
+    width: 100%;
+    height: 100%;
+    display: flex;
+    padding-top: 60px;
+` 
