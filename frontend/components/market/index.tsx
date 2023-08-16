@@ -24,6 +24,7 @@ import { BsFillCartFill } from 'react-icons/bs'
 import { IoMdArrowBack } from 'react-icons/io'
 import { useAddProductButton } from '@/stores/useStore'
 import { useCurrentProduct } from '@/stores/useStore'
+import { useAdditionalData } from '@/stores/useStore'
 import { api } from '@/services/api'
 
 const defaultImage = '/images/coca-cola-desenho.png'
@@ -33,31 +34,9 @@ export default function Market() {
   const [isVisible, setIsVisible] = useState(false);
   const { addProductButtonState, setAddProductButtonState } = useAddProductButton()
   const { currentProduct } = useCurrentProduct()
-  const [ additionalData, setAdditionalData ] = useState({})
+  const { additionalData } = useAdditionalData()
   const { number } = useAmountStore()
   const { 'id': userId } = parseCookies()
-  // console.log('fora do useEffect', additionalData)
-
-  useEffect(() => {
-      async function getAdditionalData() { 
-        try {
-          const getCompanyName = await api.get(`/companies/${currentProduct?.companyId}`)
-          
-          const getUserName = await api.get(`/users/${userId}`)
-          
-          const allAdditionalData = {
-            companyName: getCompanyName.data[0].name,
-            userName: getUserName.data.name            
-          }
-         
-          setAdditionalData(allAdditionalData)
-
-        } catch (erro) {
-          console.error(erro)
-        }
-      }
-      getAdditionalData()
-  }, [])
 
   const handleClick = () => {
     setIsVisible(!isVisible);

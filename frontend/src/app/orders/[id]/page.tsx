@@ -9,7 +9,7 @@ import PrimaryButton from "@/components/buttons/PrimaryButton"
 import OrderCard from "@/components/orderCard"
 import { api } from "@/services/api"
 
-import { Container, TableContainer, Title, ButtonContainer, UserContent } from '../../../../styles/orders.module'
+import { Container, Content, Title, ButtonContainer, UserContent } from '../../../../styles/orders.module'
 
 export default function Orders({params}: {params: {id: string}}) {
     const router = useRouter()
@@ -24,21 +24,20 @@ export default function Orders({params}: {params: {id: string}}) {
             <Header />
             {accountType === 'company' ? (
                 <>
-                    <Container>
-                        <TableContainer>
-                            <Title>pedidos</Title>
-                            <Table />
-                            <ButtonContainer>
-                                <PrimaryButton onClick={handleClick} margin="0px 70px">Fechar</PrimaryButton>
-                            </ButtonContainer>
-                        </TableContainer>
-                    </Container>
-                    <Wave type="infinite" />                
+                <Container>
+                    <Content>
+                        <Title>Pedidos</Title>
+                        <Table />
+                        <ButtonContainer>
+                            <PrimaryButton onClick={handleClick} margin="0px 70px">Fechar</PrimaryButton>
+                        </ButtonContainer>
+                    </Content>
+                </Container>
                 </>
 
             ) : (
                 <UserContent>
-                    <Title>pedidos</Title>
+                    <Title>Pedidos</Title>
                     <OrderCard />
                 </UserContent>
             )}

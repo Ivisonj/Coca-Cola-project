@@ -13,6 +13,7 @@ export const Container = styled.div `
 export const LeftColumn = styled.div `
     width: 45%;
     height: 80%;
+    padding: 0px 0px 0px 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,6 +66,7 @@ export const Text = styled.h1 `
 export const Content = styled.div `
     width: 100%;
     height: 30%;
+    margin-top: 25px; 
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -6,12 +6,19 @@ export const Container = styled.div `
     height: 100vh;
     padding-top: 70px; 
     display: flex;
+    justify-content: center;
+
+`
+export const Content = styled.aside `
+    width: 90%;
+    height: 100%; 
+    display: flex;
     flex-direction: column;
 `
 
 export const TitleContainer = styled.div `
     width: 100%;
-    height: 15%;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,12 +34,11 @@ export const CardContainer = styled.div `
     width: 100%;
     heigt: 85%;
     display: flex;
-    padding: 20px 70px;
     flex-wrap: wrap;
 `
 
 export const ButtonContainer = styled.div `
     width: 100vw;
     height: auto;
-    padding: 0px 90px;
+    margin: 0px 0px 10px 20px;
 `

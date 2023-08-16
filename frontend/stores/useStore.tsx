@@ -31,6 +31,11 @@ interface CurrentProducteIndexState {
   setCurrentProductIndex: () => void
 }
 
+interface AdditionalDataState {
+  additionalData: string | null
+  setAdditionalData: () => void
+}
+
 export const useAddProductButton = create<useAddProductButtonState>(set => ({
     addProductButtonState: false,
     setAddProductButtonState: (newState: boolean) => set(state => ({
@@ -61,4 +66,9 @@ export const useCurrentProduct = create<CurrentProductState>(set => ({
 export const useCurrrentProductIndex = create<CurrentProducteIndexState>(set => ({
   currentProductIndex: null,
   setCurrentProductIndex: (newIndex) => set((state) => ({ currentProductIndex: newIndex}))
+}))
+
+export const useAdditionalData = create<AdditionalDataState>(set => ({
+  additionalData: null,
+  setAdditionalData: (newState) => set((state) => ({ additionalData: newState })),
 }))

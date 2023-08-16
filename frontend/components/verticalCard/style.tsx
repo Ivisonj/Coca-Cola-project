@@ -31,7 +31,7 @@ export const InforContainer = styled.div `
 `
 
 export const CompanyName = styled.h3 `
-    font-size: .7rem;
+    font-size: .8rem;
     font-weight: 700;
     color: #000;
     margin-bottom:7px;

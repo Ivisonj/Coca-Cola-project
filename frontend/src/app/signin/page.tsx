@@ -78,7 +78,7 @@ export default function SignIn() {
                             <Input type="password" label="Senha" register={register('password')}/>
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
                             {errorResponse === 'E-mail ou Senha inválidos' && <ErrorMsg>{errorResponse}</ErrorMsg>}
-                            <MainButton margin="40px 0px 15px 0px" width='75%' type="submit">Entrar</MainButton>
+                            <MainButton margin="35px 0px 15px 0px" width='75%' type="submit">Entrar</MainButton>
                         </Form>
                         <Content>
                             <Text>Criar conta agora:</Text>

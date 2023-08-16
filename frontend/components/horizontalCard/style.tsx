@@ -5,7 +5,7 @@ export const Container = styled.div `
     height: 115px;
     border-radius: 10px;
     box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.4);
-    margin: 10px 20px;
+    margin: 10px 10px;
     display: flex;
 
     &:hover {
