@@ -38,6 +38,8 @@ export default function Market() {
   const { number } = useAmountStore()
   const { 'id': userId } = parseCookies()
 
+  console.log('add', additionalData)
+
   const handleClick = () => {
     setIsVisible(!isVisible);
   }

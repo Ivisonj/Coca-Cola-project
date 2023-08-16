@@ -3,16 +3,15 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
-import axios from "axios"
 
 import Wave from "@/components/wave"
 import Input from "@/components/input"
 import MainButton from "@/components/buttons/PrimaryButton"
 import { useRouter } from 'next/navigation'
-import { baseApiUrl } from "../page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from '../../../styles/signUp.module'
 import ComeBack from "@/components/comeback"
+import { api } from "@/services/api"
 
 const createUserFormSchema = z.object({
     name: z.string().nonempty('Campo obrigatório'),
@@ -33,9 +32,15 @@ export default function SignUp() {
     })
 
     const  createUser = async (data) => {
-        console.log(data)
+        const userData = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpWIUTEbl3Km2gu10Jsib39To4S4IYsn8QhA&usqp=CAU'
+        }
+
         try {
-            const response = await axios.post(`${baseApiUrl}/signup`, data)
+            const response = await api.post(`/signup`, userData)
             if(response.status === 204) {
                 router.push('/signin')
             }

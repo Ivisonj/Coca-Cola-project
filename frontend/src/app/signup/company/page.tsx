@@ -3,15 +3,15 @@ import React, { useState } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from '@hookform/resolvers/zod'
 import z from 'zod'
-import axios from "axios"
+
 import Wave from "@/components/wave"
 import Input from "@/components/input"
 import MainButton from "@/components/buttons/PrimaryButton"
 import { useRouter } from 'next/navigation'
-import { baseApiUrl } from "@/src/app/page"
 
 import { Container, LeftColumn, Title, Subtitle, RightColumn, FormBox, BoxText, BoxLink, Form, ErrorMsg } from '../../../../styles/signUpCompany.module'
 import ComeBack from "@/components/comeback"
+import { api } from "@/services/api"
 
 const createCompanyformSchema = z.object({
     name: z.string().nonempty('Campo obrigatório'),
@@ -33,8 +33,17 @@ export default function CompanySignUp() {
     })
 
     const  createCompany = async (data) => {
+
+        const companyData = {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            address: data.address,
+            imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ879EaSBnE96ff7F5g8BKTrdpWVtLt3ARqcQ&usqp=CAU'
+        }
+
         try {
-            const response = await axios.post(`${baseApiUrl}/signup/company`, data)
+            const response = await api.post(`/signup/company`, companyData)
             console.log(response)
             if(response.status === 204) {
                 router.push('/signin')
