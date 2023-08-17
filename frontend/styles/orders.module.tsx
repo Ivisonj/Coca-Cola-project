@@ -6,7 +6,6 @@ export const Container = styled.div `
     padding-top: 70px; 
     display: flex;
     justify-content: center;
-    background-color: blue;
 
 `
 export const Content = styled.aside `

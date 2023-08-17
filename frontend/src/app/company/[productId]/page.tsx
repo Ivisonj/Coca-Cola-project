@@ -12,8 +12,6 @@ import PrimaryButton from '@/components/buttons/PrimaryButton'
 import SecondaryButton from '@/components/buttons/SecondaryButton'
 import Alert from '@/components/alert'
 
-const defaultImage = '/images/coca-cola-desenho.png'
-
 export default function Product({ params }: { params: { productId: string } }) {
 
     const [responseData, setResponseData] = useState()
@@ -65,7 +63,7 @@ export default function Product({ params }: { params: { productId: string } }) {
         const putform = await api.put(`/products/${params.productId}`, {
             name: data.name,
             price: data.price, 
-            imageUrl: fileName,
+            imageUrl: `http://localhost:8080/image/${fileName}`,
         })
 
         router.push('/company')
@@ -80,7 +78,7 @@ export default function Product({ params }: { params: { productId: string } }) {
             />
             <Header />
             <LeftColumn>
-                <ImageContainer src={responseData?.imageUrl === null ? defaultImage : `http://localhost:8080/image/${responseData?.imageUrl}`} alt={responseData?.name}/>
+                <ImageContainer src={responseData?.imageUrl} alt={responseData?.name}/>
             </LeftColumn>
             <RightColumn>
                 <Text>Dados do produto:</Text>

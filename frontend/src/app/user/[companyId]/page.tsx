@@ -16,8 +16,6 @@ import { api } from '@/services/api'
 
 import {  Container, LeftColumn, RightColumn, CarouselContent, ProductInfor, Title, Subtitle } from '../../../../styles/companyProducts.module'
 
-const defaultImage = '/images/coca-cola-desenho.png'
-
 export default function CompanyProducts({params}: { params: { companyId: string } }) {
 
     const { 'id': userId } = parseCookies()
@@ -79,7 +77,7 @@ export default function CompanyProducts({params}: { params: { companyId: string 
                                 key={i}
                                 name={responseData[i]?.name}
                                 price={responseData[i]?.price}          
-                                img={responseData[i]?.imageUrl === null ? defaultImage : `http://localhost:8080/image/${responseData[i]?.imageUrl}`}   
+                                img={responseData[i]?.imageUrl}   
                             />
                         ))}
                     </Carousel>

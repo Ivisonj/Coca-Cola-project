@@ -23,6 +23,8 @@ export default function Profile({params}: { params: {profile: string} }) {
     const [ responseData, setResponseData] = useState()
     const { 'account': accountType } = parseCookies()
 
+    console.log('response :', responseData)
+
     const toggleEdite = () => {
         setIsEditing(!isEditing)
     }
@@ -54,11 +56,13 @@ export default function Profile({params}: { params: {profile: string} }) {
             const fileName = fileResponse.data
 
             const userInform = {
-                name: data.name === undefined ? responseData?.name : undefined, 
-                email: data.email === undefined ? responseData?.email : undefined,
-                address: data.address === undefined ? responseData?.address : undefined,
-                imageUrl: fileName
+                name: data.name === undefined ? responseData?.name : data.name, 
+                email: data.email === undefined ? responseData?.email : data.email,
+                address: data.address === undefined ? responseData?.address : data.address,
+                imageUrl: `http://localhost:8080/image/${fileName}` 
             }
+            
+            console.log('dados enviados:', userInform)
             
             if(accountType === 'company') {
                 const putCompanyForm = await api.put(`/companies/${params.profile}`, userInform)
@@ -80,8 +84,7 @@ export default function Profile({params}: { params: {profile: string} }) {
             <Header />
             <LeftColumn>
                 <Avatar 
-                    src={responseData ? (responseData?.imageUrl === null ? defaultProfileImage : 
-                        `http://localhost:8080/image/${responseData?.imageUrl}`) : defaultProfileImage} 
+                    src={responseData?.imageUrl} 
                     alt={responseData?.name}
                 />
             </LeftColumn>

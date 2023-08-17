@@ -33,10 +33,16 @@ export default function RegisterProduct() {
 
     const createProduct = async (data) => {
         const companyId = user?.id
-        data.companyId = companyId
+        
+        const productData = {
+            name: data.name, 
+            price: data.price, 
+            companyId: companyId,
+            imageUrl: 'http://localhost:8080/image/e541c1ddc517fc2cc68aa0cfc6e68549-COCA-DESENHO.png'
+        }
         
         try {
-           const response = await api.post('/products', data)
+           const response = await api.post('/products', productData)
            router.push('/company')
         } catch(error) {
             console.error(error)

@@ -27,8 +27,6 @@ import { useCurrentProduct } from '@/stores/useStore'
 import { useAdditionalData } from '@/stores/useStore'
 import { api } from '@/services/api'
 
-const defaultImage = '/images/coca-cola-desenho.png'
-
 export default function Market() {
 
   const [isVisible, setIsVisible] = useState(false);
@@ -105,8 +103,7 @@ export default function Market() {
             </MarketIcon>
           </Icons>
           <ProductDetail className={!isVisible ? 'donShowDisplay' : null}>
-            <ProductImage src={currentProduct ?  (currentProduct?.imageUrl === null ? defaultImage : 
-              `http://localhost:8080/image/${currentProduct?.imageUrl}`) : defaultImage} alt={currentProduct?.name}
+            <ProductImage src={currentProduct?.imageUrl} alt={currentProduct?.name}
             />
             <ProductName>{currentProduct?.name}</ProductName>
             <Text>{`R$${productPrice}`}</Text>

@@ -54,7 +54,7 @@ export default function Company() {
                                 id={item.id}
                                 name={item.name}
                                 price={item.price} 
-                                image={item.imageUrl === null ? defaultImage : `http://localhost:8080/image/${item.imageUrl}`}
+                                image={item.imageUrl}
                             />
                         ))}
                     </CardContainer>
