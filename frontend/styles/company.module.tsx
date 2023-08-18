@@ -28,6 +28,7 @@ export const TitleContainer = styled.div `
 export const Title = styled.h1 `
     font-size: 1.5rem;
     font-weight: bold;
+    margin: 15px;
 `
 
 export const CardContainer = styled.div `
@@ -38,7 +39,7 @@ export const CardContainer = styled.div `
 `
 
 export const ButtonContainer = styled.div `
-    width: 100vw;
+    width: 100%;
     height: auto;
     margin: 0px 0px 10px 20px;
 `

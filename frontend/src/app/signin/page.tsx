@@ -74,7 +74,7 @@ export default function SignIn() {
                         <Form onSubmit={handleSubmit(state === 'user' ? userSignin : companySignin)}>
                             <Input type="text" label="E-mail" register={register('email')}/>
                             {errors.email && <ErrorMsg>{errors.email.message}</ErrorMsg>}
-                            {errorResponse === 'Usuário não encontrado' || 'Empresa não encontrada' && <ErrorMsg>{errorResponse}</ErrorMsg>}
+                            {errorResponse === 'Usuário não encontrado' && <ErrorMsg>{errorResponse}</ErrorMsg>}
                             <Input type="password" label="Senha" register={register('password')}/>
                             {errors.password && <ErrorMsg>{errors.password.message}</ErrorMsg>}
                             {errorResponse === 'E-mail ou Senha inválidos' && <ErrorMsg>{errorResponse}</ErrorMsg>}
