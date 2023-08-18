@@ -23,6 +23,7 @@ export default function CompanyProducts({params}: { params: { companyId: string 
     const [ responseData, setResponseData ] = useState()
     const { currentProduct, setCurrentProduct } = useCurrentProduct()
     const { additionalData, setAdditionalData } = useAdditionalData()
+    console.log('add', additionalData)
 
     useEffect(() => {
         if (responseData && responseData.length > 0) {
@@ -39,7 +40,7 @@ export default function CompanyProducts({params}: { params: { companyId: string 
                 const productResponse = await api.get(`/products/parentId/${params.companyId}`)
                 setResponseData(productResponse.data)
 
-                const getCompanyName = await api.get(`/companies/${currentProduct?.companyId}`)
+                const getCompanyName = await api.get(`/companies/${params.companyId}`)
           
                 const getUserName = await api.get(`/users/${userId}`)
                 

@@ -3,8 +3,6 @@ import { parseCookies } from 'nookies'
 import { Container, CardContainer, LeftColumn, RightColumn, ProductImage, Title, Information } from './style'
 import { api } from '@/services/api'
 
-const defaultImage = '/images/coca-cola-desenho.png'
-
 type responseDataType = {
     name: string
     amount: number
@@ -36,7 +34,7 @@ export default function OrderCard() {
             {responseData?.map((item) => (
                 <CardContainer key={item.id}>
                     <LeftColumn>
-                        <ProductImage src={item.imageUrl === null ? defaultImage : `http://localhost:8080/image/${item.imageUrl}`} alt={item.name} />
+                        <ProductImage src={item.imageUrl} alt={item.name} />
                     </LeftColumn>
                     <RightColumn>
                         <Title>Detalhes do Produto:</Title>

@@ -3,11 +3,9 @@ import { useRouter } from "next/navigation"
 import { parseCookies } from "nookies"
 
 import Header from "@/components/header"
-import Wave from "@/components/wave"
 import Table from "@/components/table"
 import PrimaryButton from "@/components/buttons/PrimaryButton"
 import OrderCard from "@/components/orderCard"
-import { api } from "@/services/api"
 
 import { Container, Content, Title, ButtonContainer, UserContent } from '../../../../styles/orders.module'
 
