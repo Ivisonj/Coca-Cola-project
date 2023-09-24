@@ -8,7 +8,7 @@ module.exports = app => {
         const company = await app.db('companies')
             .where({ email: req.body.email }).first()
 
-        if(!company) return res.status(400).send('Empresa não encontrada')
+        if(!company) return res.status(400).send('Usuário não encontrado')
 
         const isMatch = bcrypt.compareSync(req.body.password, company.password)
         if(!isMatch) return res.status(401).send('E-mail ou Senha inválidos')

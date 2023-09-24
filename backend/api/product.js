@@ -53,19 +53,21 @@ module.exports = app => {
     const remove = async (req, res) => {
         try {
             const rowsDeleted = await app.db('products')
-                .where({ id: req.params,id }).del()
-
-                try {
-                    existsOrError(rowsDeleted, 'Produto não foi encontrado')
-                } catch(msg) {
-                    return res.status(400).send(msg)
-                }
-
-                res.status(204).send()
-        } catch(msg) {
-            res.status(500).send(msg)
+                .where({ id: req.params.id })
+                .del();
+    
+            if (rowsDeleted === 0) {
+                return res.status(404).send('Produto não encontrado');
+            }
+    
+            res.status(204).send();
+        } catch (err) {
+            console.error(err);
+            res.status(500).send('Erro ao deletar o produto');
         }
     }
+    
+    
     
     return { save, get, getById, getByParentId, remove }
 }
