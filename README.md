@@ -1,16 +1,14 @@
 # Coca-Cola-project
 
-<video width="640" height="360" controls loop>
-    <source src="/videos/coca-video1.mp4" type="video/mp4">
-</video>
 
-<video width="640" height="360" controls loop>
-    <source src="/videos/coca-video2.mp4" type="video/mp4">
-</video>
 
-<video width="640" height="360" controls loop>
-    <source src="/videos/coca-video3.mp4" type="video/mp4">
-</video>
+
+https://github.com/Ivisonj/Coca-Cola-project/assets/115274427/761d797c-f490-449c-a52e-c7a6b4b3c7a8
+
+https://github.com/Ivisonj/Coca-Cola-project/assets/115274427/0e209ff4-f51e-441c-9364-051e181ce9d2
+
+https://github.com/Ivisonj/Coca-Cola-project/assets/115274427/f7a90c1c-01f5-41fd-9430-30fd3028f1c1
+
 
 ## Descrição
 
