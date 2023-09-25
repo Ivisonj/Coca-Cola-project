@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useContext, useState } from "react"
-import { parseCookies } from 'nookies'
 import { useRouter } from "next/navigation"
 
 import Header from "@/components/header"
@@ -11,26 +10,32 @@ import { Container, Content, ButtonContainer, TitleContainer, Title, CardContain
 import { api } from "@/services/api"
 import { AuthContext } from "@/src/Context/authContext"
 
-const defaultImage = '/images/coca-cola-desenho.png'
+type ResponseDataTypes = {
+    id: number
+    name: string
+    price: number
+    imageUrl: string
+    companyId: number
+}
 
 export default function Company() {
     
     const router = useRouter()
     const { user } = useContext(AuthContext)
-    const [responseData, setResponseData] = useState()
-    const { 'id': id } = parseCookies()
+    const [responseData, setResponseData] = useState<ResponseDataTypes[]>([])
+    console.log(responseData)
 
     useEffect(() => {
         async function productsData() {
             try {
-                const response = await api.get(`/products/parentId/${id}`)
+                const response = await api.get(`/products/parentId/${user?.id}`)
                 setResponseData(response.data)
             } catch(error) {
                 console.error(error)
             }
         }
         productsData()
-    }, []) 
+    }, [user]) 
 
     const handleClick = () => {
         router.push('/company/register')

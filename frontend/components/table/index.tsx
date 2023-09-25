@@ -15,7 +15,7 @@ export default function Table() {
 
     const { 'id': companyId } = parseCookies()
     const [ responseData, setResponseData ] = useState<TableTypes>()
-console.log(responseData)
+
 
     useEffect(() => {
         async function loadData() {

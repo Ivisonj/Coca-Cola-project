@@ -1,0 +1,8 @@
+module.exports = {
+  authSecret: 'Create a Password',
+   db: {
+    database: 'Data Base Name',
+    user:     'Postgre User',
+    password: 'Postgre Password'
+  }
+}

@@ -9,7 +9,7 @@ import { AuthContext } from "@/src/Context/authContext"
 import Header from "@/components/header"
 import Wave from "@/components/wave"
 import Input from "@/components/input"
-import MainButton from "@/components/buttons/PrimaryButton"
+import PrimaryButton from "@/components/buttons/PrimaryButton"
 import { api } from "@/services/api"
 
 import { Container, FormBox, Title, Form, ErrorMsg } from '../../../../styles/register.module'
@@ -31,15 +31,19 @@ export default function RegisterProduct() {
         mode: 'onChange',
     })
 
-    const createProduct = async (data) => {
+    const createProduct = async (data: productFormData) => {
         const companyId = user?.id
+        
+        const formattedPrice = parseFloat(data.price).toFixed(2)
         
         const productData = {
             name: data.name, 
-            price: data.price, 
+            price: formattedPrice, 
             companyId: companyId,
             imageUrl: 'http://localhost:8080/image/e541c1ddc517fc2cc68aa0cfc6e68549-COCA-DESENHO.png'
         }
+
+        console.log(productData)
         
         try {
            const response = await api.post('/products', productData)
@@ -60,9 +64,9 @@ export default function RegisterProduct() {
                             {errors.name && <ErrorMsg>{errors.name.message}</ErrorMsg>}
                             <Input type="text" label="Preço do Produto" register={register('price')} step={'0.01'}/>
                             {errors.price && <ErrorMsg>{errors.price.message}</ErrorMsg>}
-                            <MainButton goTo="/company-dashboard" type="submit" margin="30px 0px 0px 0px">
+                            <PrimaryButton type="submit" margin="30px 0px 0px 0px">
                                 finalizar
-                            </MainButton>
+                            </PrimaryButton>
                     </Form>
                 </FormBox>
             </Container>

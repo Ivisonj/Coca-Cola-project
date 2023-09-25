@@ -12,15 +12,20 @@ import PrimaryButton from '@/components/buttons/PrimaryButton'
 import SecondaryButton from '@/components/buttons/SecondaryButton'
 import Alert from '@/components/alert'
 
+type ResponseDataTypes = {
+    id: number
+    name: string
+    price: number
+    imageUrl: string
+    companyId: number
+}
+
 export default function Product({ params }: { params: { productId: string } }) {
 
-    const [responseData, setResponseData] = useState()
+    const router = useRouter()
+    const [responseData, setResponseData] = useState<ResponseDataTypes>({})
     const [isAlertVisible, setIsAlertVisible] = useState(false)
     const [isEditing, setIsEditing] = useState(true)
-    const router = useRouter()
-
-    console.log(isAlertVisible)
-
     const { register, handleSubmit } = useForm()
 
     const toggleEdite = () => {
@@ -52,7 +57,7 @@ export default function Product({ params }: { params: { productId: string } }) {
         }
     }
 
-    const editeProduct = async (data) => {
+    const editeProduct = async (data: ResponseDataTypes) => {
         const formData = new FormData()
 
         formData.append('file', data.file[0])
@@ -60,11 +65,13 @@ export default function Product({ params }: { params: { productId: string } }) {
         const fileResponse = await api.post('/upload', formData)
         const fileName = fileResponse.data
 
-        const putform = await api.put(`/products/${params.productId}`, {
-            name: data.name,
-            price: data.price, 
+        const productForm = {
+            name: data.name === undefined ? responseData?.name : data.name, 
+            price: data.price === undefined ? responseData?.price : data.price,
             imageUrl: `http://localhost:8080/image/${fileName}`,
-        })
+        }
+
+        const putform = await api.put(`/products/${params.productId}`, productForm)
 
         router.push('/company')
     }
