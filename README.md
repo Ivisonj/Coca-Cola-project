@@ -1,8 +1,5 @@
 # Coca-Cola-project
 
-
-
-
 https://github.com/Ivisonj/Coca-Cola-project/assets/115274427/761d797c-f490-449c-a52e-c7a6b4b3c7a8
 
 https://github.com/Ivisonj/Coca-Cola-project/assets/115274427/0e209ff4-f51e-441c-9364-051e181ce9d2
